@@ -1,0 +1,90 @@
+---
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import StickyCallBar from "../components/StickyCallBar.astro";
+import { siteConfig } from "../config/site";
+import { localBusinessSchema } from "../lib/schema";
+import "../styles/global.css";
+
+interface Props {
+  /** <title> Tag – bitte je Seite individuell und aussagekräftig formulieren. */
+  title: string;
+  /** Meta Description – idealerweise 120-158 Zeichen, individuell je Seite. */
+  description: string;
+  /** Pfad ab Domain-Root, z. B. "/leistungen/tueroeffnung" – für Canonical & OG-URL. */
+  path: string;
+  /** Optionales Open-Graph-Bild (absoluter oder Root-relativer Pfad). */
+  ogImage?: string;
+  /** Zusätzliche JSON-LD-Objekte, die diese Seite braucht (FAQPage, Service, …). */
+  structuredData?: object[];
+  /** Seite von der Indexierung ausschließen (z. B. Dank-Seite). */
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description,
+  path,
+  ogImage = "/images/og-default.png",
+  structuredData = [],
+  noindex = false,
+} = Astro.props;
+
+const canonicalUrl = new URL(path, siteConfig.url).toString();
+const ogImageUrl = new URL(ogImage, siteConfig.url).toString();
+const allSchemas = [localBusinessSchema(), ...structuredData];
+---
+
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={siteConfig.brandName} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:locale" content="de_DE" />
+
+    <!-- Twitter Card (wird von einigen Messengern/Vorschau-Diensten mitgenutzt) -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+
+    <!-- Icons -->
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="apple-touch-icon" href="/favicon-180.png" />
+    <meta name="theme-color" content="#0f2439" />
+
+    <!-- Geo-Hinweise (ergänzendes, von Google nicht als Rankingfaktor
+         garantiertes Signal; die eigentliche lokale Relevanz entsteht vor
+         allem durch LocalBusiness-Schema, NAP-Konsistenz und Inhalte) -->
+    <meta name="geo.region" content={siteConfig.address.region} />
+    <meta name="geo.placename" content={siteConfig.address.city} />
+
+    {allSchemas.map((schema) => (
+      <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+    ))}
+
+    <slot name="head" />
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">Zum Inhalt springen</a>
+    <Header />
+    <main id="main-content">
+      <slot />
+    </main>
+    <Footer />
+    <StickyCallBar />
+  </body>
+</html>

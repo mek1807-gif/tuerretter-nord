@@ -1,0 +1,88 @@
+---
+/**
+ * Interaktiver Preisrechner.
+ * Reines Vanilla-JS (kein Framework, keine Bibliothek) – die komplette
+ * Rechenlogik liest ausschließlich data-value-Attribute aus, die direkt
+ * aus src/config/pricing.ts generiert werden. Preise ändern = nur die
+ * Config-Datei anpassen, dieses Template bleibt unverändert.
+ */
+import { calculatorConfig, pricingMeta } from "../config/pricing";
+import { siteConfig } from "../config/site";
+import Icon from "./Icon.astro";
+
+const groups = [
+  { key: "doorStatus", ...calculatorConfig.doorStatus, type: "radio" as const },
+  { key: "service", ...calculatorConfig.service, type: "radio" as const },
+  { key: "timeOfDay", ...calculatorConfig.timeOfDay, type: "radio" as const },
+  { key: "dayType", ...calculatorConfig.dayType, type: "radio" as const },
+  { key: "area", ...calculatorConfig.area, type: "radio" as const },
+  { key: "extras", ...calculatorConfig.extras, type: "checkbox" as const },
+];
+---
+
+<form class="calculator" id="price-calculator" novalidate>
+  {groups.map((group) => (
+    <fieldset class="calculator__step">
+      <legend>{group.label}</legend>
+      <div class="calculator__options">
+        {group.options.map((option, index) => (
+          <div class="calc-option">
+            <input
+              type={group.type}
+              name={group.key}
+              id={`${group.key}-${option.id}`}
+              value={option.id}
+              data-value={option.value}
+              checked={group.type === "radio" && index === 0}
+            />
+            <label for={`${group.key}-${option.id}`}>
+              <span>{option.label}</span>
+              <span class="calc-option__value">
+                {option.value > 0 ? `+${option.value} ${pricingMeta.currency}` : group.key === "doorStatus" ? `ab ${option.value} ${pricingMeta.currency}` : "inklusive"}
+              </span>
+            </label>
+          </div>
+        ))}
+      </div>
+    </fieldset>
+  ))}
+
+  <div class="calculator__result" aria-live="polite">
+    <div>
+      <p class="calculator__result-label">Voraussichtlicher Gesamtpreis</p>
+      <p class="calculator__result-amount"><span id="calc-result">0</span> {pricingMeta.currency}</p>
+    </div>
+    <a href={siteConfig.phone.href} class="btn btn--primary" id="calc-call-btn">
+      <Icon name="phone" class="btn-icon" /> Jetzt anrufen &amp; Termin sichern
+    </a>
+  </div>
+
+  <p class="calculator__disclaimer">{pricingMeta.calculatorDisclaimer}</p>
+</form>
+
+<script>
+  function initCalculator() {
+    const form = document.getElementById("price-calculator") as HTMLFormElement | null;
+    const resultEl = document.getElementById("calc-result");
+    if (!form || !resultEl) return;
+
+    function calculate() {
+      if (!form) return;
+      let total = 0;
+      const inputs = form.querySelectorAll<HTMLInputElement>("input[data-value]");
+      inputs.forEach((input) => {
+        if (input.checked) {
+          total += Number(input.dataset.value || 0);
+        }
+      });
+      if (resultEl) {
+        resultEl.textContent = String(total);
+      }
+    }
+
+    form.addEventListener("change", calculate);
+    calculate();
+  }
+
+  initCalculator();
+</script>

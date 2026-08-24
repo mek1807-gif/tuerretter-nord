@@ -1,0 +1,38 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import PriceCalculator from "../components/PriceCalculator.astro";
+import Icon from "../components/Icon.astro";
+import { siteConfig } from "../config/site";
+
+const title = `Preisrechner – Türöffnung & Schlüsseldienst | ${siteConfig.brandName}`;
+const description = `Berechnen Sie unverbindlich den voraussichtlichen Preis für Ihre Türöffnung oder Ihren Schlosswechsel. Transparent, ohne versteckte Kosten – ${siteConfig.brandName}.`;
+---
+
+<BaseLayout title={title} description={description} path="/preisrechner">
+  <Breadcrumbs items={[{ label: "Start", href: "/" }, { label: "Preisrechner", href: "/preisrechner" }]} />
+
+  <section class="section" style="padding-top:1rem;">
+    <div class="container">
+      <div class="section-head section-head--center">
+        <span class="eyebrow"><Icon name="calculator" class="btn-icon" /> Preisrechner</span>
+        <h1>Ihr voraussichtlicher Preis in wenigen Klicks</h1>
+        <p class="text-muted">
+          Wählen Sie Ihre Situation aus – Sie erhalten sofort eine unverbindliche Preiseinschätzung.
+          Der endgültige Preis wird vor Ort final bestätigt.
+        </p>
+      </div>
+
+      <div style="max-width:760px;margin-inline:auto;">
+        <PriceCalculator />
+      </div>
+
+      <div class="callout" style="max-width:760px;margin:2rem auto 0;">
+        <p class="mb-0">
+          <strong>In einer akuten Notsituation?</strong> Rufen Sie uns direkt an – am Telefon können wir Ihre
+          Situation meist noch genauer einschätzen als der Rechner: <a href={siteConfig.phone.href}>{siteConfig.phone.display}</a>
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,42 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import Icon from "../../components/Icon.astro";
+import { siteConfig } from "../../config/site";
+import { cities } from "../../config/cities";
+
+const title = `Einsatzgebiete – Schlüsseldienst in Ihrer Region | ${siteConfig.brandName}`;
+const description = `${siteConfig.brandName} ist in mehreren Städten und Gemeinden im Raum ${siteConfig.serviceAreaShort} für Sie im Einsatz. Finden Sie Ihre Stadt.`;
+---
+
+<BaseLayout title={title} description={description} path="/einsatzgebiete">
+  <Breadcrumbs items={[{ label: "Start", href: "/" }, { label: "Einsatzgebiete", href: "/einsatzgebiete" }]} />
+
+  <section class="section" style="padding-top:1rem;">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow"><Icon name="map-pin" class="btn-icon" /> Einsatzgebiete</span>
+        <h1>Unsere Einsatzgebiete</h1>
+        <p class="text-muted">{siteConfig.serviceAreaLong}</p>
+      </div>
+
+      <div class="grid grid--3">
+        {cities.map((city) => (
+          <a href={`/schluesseldienst-${city.slug}`} class="card card--service">
+            <span class="card__icon"><Icon name="map-pin" /></span>
+            <h2 style="font-size:1.15rem;">{city.name}</h2>
+            <p>{city.intro.slice(0, 110)}…</p>
+            <span class="card__link">Details für {city.name} <Icon name="arrow-right" class="btn-icon" /></span>
+          </a>
+        ))}
+      </div>
+
+      <div class="callout" style="margin-top:2rem;">
+        <p class="mb-0">
+          Ihre Stadt oder Gemeinde ist nicht aufgeführt? Rufen Sie uns trotzdem an – je nach Lage sind wir
+          häufig auch in angrenzenden Orten im Einsatz: <a href={siteConfig.phone.href}>{siteConfig.phone.display}</a>
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

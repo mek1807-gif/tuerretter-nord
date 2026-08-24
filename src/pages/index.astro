@@ -1,0 +1,204 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import TrustStrip from "../components/TrustStrip.astro";
+import FaqAccordion from "../components/FaqAccordion.astro";
+import TestimonialsSection from "../components/TestimonialsSection.astro";
+import Icon from "../components/Icon.astro";
+import { siteConfig } from "../config/site";
+import { services } from "../config/services";
+import { cities } from "../config/cities";
+import { faqItems } from "../config/faq";
+import { basePriceTable, pricingMeta } from "../config/pricing";
+import { faqPageSchema } from "../lib/schema";
+
+const homeFaq = faqItems.slice(0, 6);
+const title = `${siteConfig.brandName} – Schlüsseldienst: schnelle & faire Türöffnungen`;
+const description = `Ausgesperrt? ${siteConfig.brandName} öffnet Ihre Tür schnell, seriös und zu transparenten Preisen. Schlüsseldienst im Raum ${siteConfig.serviceAreaShort}. Jetzt anrufen.`;
+---
+
+<BaseLayout title={title} description={description} path="/" structuredData={[faqPageSchema(homeFaq)]}>
+
+  <section class="hero">
+    <div class="container hero__grid">
+      <div>
+        <span class="eyebrow" style="background:rgba(255,255,255,0.12);color:#fff;">Schlüsseldienst {siteConfig.serviceAreaShort}</span>
+        <h1>{siteConfig.brandName} – schnelle &amp; faire Türöffnungen</h1>
+        <p class="hero__sub">
+          Ausgesperrt? Wir helfen schnell, zuverlässig und zu transparenten Preisen – seriös, professionell
+          und mit möglichst beschädigungsarmer Türöffnung.
+        </p>
+
+        <a href={siteConfig.phone.href} class="hero__phone" data-cta="hero-phone">
+          <span>
+            <span class="hero__phone-label">Sofort erreichbar</span>
+            <Icon name="phone" class="btn-icon" /> {siteConfig.phone.display}
+          </span>
+        </a>
+
+        <div class="hero__cta-row">
+          <a href={siteConfig.phone.href} class="btn btn--primary btn--lg" data-cta="hero-call">
+            <Icon name="phone" class="btn-icon" /> Jetzt anrufen
+          </a>
+          <a href="/preisrechner" class="btn btn--outline-light btn--lg" data-cta="hero-calculator">
+            <Icon name="calculator" class="btn-icon" /> Preis berechnen
+          </a>
+        </div>
+
+        <ul class="hero__facts">
+          <li><Icon name="euro" /> Transparente Preise</li>
+          <li><Icon name="clock" /> Schnelle Einsatzbereitschaft</li>
+          <li><Icon name="shield-check" /> Möglichst beschädigungsarme Öffnung</li>
+          <li><Icon name="map-pin" /> Einsatzgebiet: {siteConfig.serviceAreaShort}</li>
+        </ul>
+      </div>
+
+      <div class="hero__card">
+        <h2>So läuft Ihre Anfrage ab</h2>
+        <ul>
+          <li><Icon name="phone" /> Anrufen und Situation kurz schildern</li>
+          <li><Icon name="euro" /> Realistische Kosteneinschätzung am Telefon</li>
+          <li><Icon name="car" /> Anfahrt im Einsatzgebiet</li>
+          <li><Icon name="check-circle" /> Türöffnung – transparent &amp; nachvollziehbar</li>
+        </ul>
+        <a href="/kontakt" class="btn btn--secondary btn--block">
+          <Icon name="message-circle" class="btn-icon" /> Lieber schreiben? Zum Kontaktformular
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <TrustStrip />
+
+  <section class="section" aria-labelledby="leistungen-heading">
+    <div class="container">
+      <div class="section-head section-head--center">
+        <span class="eyebrow">Unsere Leistungen</span>
+        <h2 id="leistungen-heading">Wobei wir Ihnen helfen</h2>
+        <p class="text-muted">
+          Von der zugefallenen Wohnungstür bis zum vorsorglichen Schlosswechsel –
+          hier finden Sie unsere wichtigsten Leistungen im Überblick.
+        </p>
+      </div>
+
+      <div class="grid grid--3">
+        {services.map((service) => (
+          <a href={`/leistungen/${service.slug}`} class="card card--service">
+            <span class="card__icon"><Icon name={service.icon} /></span>
+            <h3>{service.title}</h3>
+            <p>{service.teaser}</p>
+            <span class="card__link">Mehr erfahren <Icon name="arrow-right" class="btn-icon" /></span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--muted" aria-labelledby="preise-heading">
+    <div class="container">
+      <div class="two-col">
+        <div>
+          <span class="eyebrow">Transparente Preise</span>
+          <h2 id="preise-heading">Klare Preise statt böser Überraschungen</h2>
+          <p>
+            Wir nennen Ihnen Kosten so früh wie möglich – nach Möglichkeit bereits am Telefon und
+            in jedem Fall vor Beginn der eigentlichen Arbeiten. Unsere Richtpreise finden Sie hier im Überblick.
+          </p>
+          <ul class="list-check">
+            <li><Icon name="check" /> Keine versteckten Zusatzkosten</li>
+            <li><Icon name="check" /> Zuschläge klar ausgewiesen (Abend, Nacht, Sonn-/Feiertag)</li>
+            <li><Icon name="check" /> Nachvollziehbare Rechnung</li>
+          </ul>
+          <div class="hero__cta-row">
+            <a href="/preise" class="btn btn--secondary">Alle Preise ansehen</a>
+            <a href="/preisrechner" class="btn btn--primary">
+              <Icon name="calculator" class="btn-icon" /> Preis jetzt berechnen
+            </a>
+          </div>
+        </div>
+
+        <div class="price-table__wrap" style="margin:0;">
+          <table class="price-table">
+            <caption>Richtpreise (Beispiele)</caption>
+            <thead>
+              <tr><th scope="col">Leistung</th><th scope="col">Preis</th></tr>
+            </thead>
+            <tbody>
+              {basePriceTable.map((row) => (
+                <tr>
+                  <td>{row.label}</td>
+                  <td class="price-table__amount">{row.from ? "ab " : ""}{row.price} {pricingMeta.currency}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="gebiete-heading">
+    <div class="container">
+      <div class="section-head section-head--center">
+        <span class="eyebrow">Einsatzgebiete</span>
+        <h2 id="gebiete-heading">Schlüsseldienst in Ihrer Nähe</h2>
+        <p class="text-muted">{siteConfig.serviceAreaLong}</p>
+      </div>
+      <div class="grid grid--4">
+        {cities.map((city) => (
+          <a href={`/schluesseldienst-${city.slug}`} class="card card--service">
+            <span class="card__icon"><Icon name="map-pin" /></span>
+            <h3>{city.name}</h3>
+            <p>Schlüsseldienst &amp; Türöffnung in {city.name}</p>
+            <span class="card__link">Details <Icon name="arrow-right" class="btn-icon" /></span>
+          </a>
+        ))}
+      </div>
+      <p class="text-center" style="margin-top:1.5rem;">
+        <a href="/einsatzgebiete">Alle Einsatzgebiete im Überblick →</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--muted" aria-labelledby="vertrauen-heading">
+    <div class="container">
+      <div class="section-head section-head--center">
+        <span class="eyebrow">Vertrauen</span>
+        <h2 id="vertrauen-heading">Kundenstimmen</h2>
+      </div>
+      <TestimonialsSection />
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="faq-heading">
+    <div class="container">
+      <div class="section-head section-head--center">
+        <span class="eyebrow">Häufige Fragen</span>
+        <h2 id="faq-heading">Gut zu wissen</h2>
+      </div>
+      <div style="max-width:760px;margin-inline:auto;">
+        <FaqAccordion items={homeFaq} />
+      </div>
+      <p class="text-center" style="margin-top:1.5rem;">
+        <a href="/faq">Alle Fragen &amp; Antworten →</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--dark" aria-labelledby="cta-heading">
+    <div class="container text-center">
+      <h2 id="cta-heading">Jetzt ausgesperrt? Wir sind für Sie da.</h2>
+      <p style="max-width:560px;margin-inline:auto;color:var(--color-slate-200);">
+        Rufen Sie uns direkt an – wir schätzen Ihre Situation ehrlich ein und nennen Ihnen die voraussichtlichen Kosten.
+      </p>
+      <div class="hero__cta-row" style="justify-content:center;">
+        <a href={siteConfig.phone.href} class="btn btn--primary btn--lg">
+          <Icon name="phone" class="btn-icon" /> {siteConfig.phone.display}
+        </a>
+        <a href="/preisrechner" class="btn btn--outline-light btn--lg">
+          <Icon name="calculator" class="btn-icon" /> Preis berechnen
+        </a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

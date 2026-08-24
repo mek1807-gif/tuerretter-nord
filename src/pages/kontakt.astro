@@ -1,0 +1,72 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import ContactForm from "../components/ContactForm.astro";
+import Icon from "../components/Icon.astro";
+import { siteConfig } from "../config/site";
+
+const title = `Kontakt – ${siteConfig.brandName}`;
+const description = `Kontaktieren Sie ${siteConfig.brandName}: telefonisch, per E-Mail oder über unser Kontaktformular. Wir sind im Raum ${siteConfig.serviceAreaShort} für Sie da.`;
+const mapsQuery = encodeURIComponent(
+  `${siteConfig.address.street}, ${siteConfig.address.zip} ${siteConfig.address.city}`
+);
+---
+
+<BaseLayout title={title} description={description} path="/kontakt">
+  <Breadcrumbs items={[{ label: "Start", href: "/" }, { label: "Kontakt", href: "/kontakt" }]} />
+
+  <section class="section" style="padding-top:1rem;">
+    <div class="container two-col">
+      <div>
+        <span class="eyebrow">Kontakt</span>
+        <h1>Wir sind für Sie erreichbar</h1>
+        <p class="text-muted">
+          Bei einer akuten Aussperrung rufen Sie uns am besten direkt an. Für weniger dringende Anliegen
+          nutzen Sie gerne unser Kontaktformular oder schreiben uns eine E-Mail.
+        </p>
+
+        <ul class="list-check" style="margin-bottom:2rem;">
+          <li>
+            <Icon name="phone" />
+            <span><strong>Telefon:</strong> <a href={siteConfig.phone.href}>{siteConfig.phone.display}</a></span>
+          </li>
+          <li>
+            <Icon name="mail" />
+            <span><strong>E-Mail:</strong> <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a></span>
+          </li>
+          <li>
+            <Icon name="map-pin" />
+            <span>
+              <strong>Adresse:</strong> {siteConfig.address.street}, {siteConfig.address.zip} {siteConfig.address.city}
+            </span>
+          </li>
+          <li>
+            <Icon name="clock" />
+            <span><strong>Geschäftszeiten:</strong> {siteConfig.openingHours.display}</span>
+          </li>
+          <li>
+            <Icon name="map-pin" />
+            <span><strong>Einsatzgebiet:</strong> {siteConfig.serviceAreaShort}</span>
+          </li>
+        </ul>
+
+        <div class="map-embed" role="img" aria-label={`Kartenausschnitt ${siteConfig.address.city}`}>
+          <div>
+            <Icon name="map-pin" class="btn-icon" />
+            <p class="mb-0">
+              Kartenintegration folgt, sobald die endgültige Geschäftsadresse eingetragen ist.<br />
+              <a href={`https://www.google.com/maps/search/?api=1&query=${mapsQuery}`} rel="noopener" target="_blank">
+                Adresse in Google Maps öffnen
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h2>Kontaktformular</h2>
+        <ContactForm />
+      </div>
+    </div>
+  </section>
+</BaseLayout>

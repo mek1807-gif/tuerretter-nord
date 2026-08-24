@@ -1,0 +1,38 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import Icon from "../../components/Icon.astro";
+import { siteConfig } from "../../config/site";
+import { services } from "../../config/services";
+
+const title = `Leistungen – Schlüsseldienst & Türöffnung | ${siteConfig.brandName}`;
+const description = `Alle Leistungen von ${siteConfig.brandName} im Überblick: Türöffnung, Schlüssel verloren, Schlüssel abgebrochen, Schlosswechsel, Einbruchschutz und Notdienst.`;
+---
+
+<BaseLayout title={title} description={description} path="/leistungen">
+  <Breadcrumbs items={[{ label: "Start", href: "/" }, { label: "Leistungen", href: "/leistungen" }]} />
+
+  <section class="section" style="padding-top:1rem;">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Leistungen</span>
+        <h1>Unsere Leistungen im Überblick</h1>
+        <p class="text-muted">
+          {siteConfig.brandName} unterstützt Sie bei allen Anliegen rund um Türöffnung, Schlüssel und Schließsicherheit –
+          fachgerecht, transparent und ohne unrealistische Versprechen.
+        </p>
+      </div>
+
+      <div class="grid grid--3">
+        {services.map((service) => (
+          <a href={`/leistungen/${service.slug}`} class="card card--service">
+            <span class="card__icon"><Icon name={service.icon} /></span>
+            <h2 style="font-size:1.2rem;">{service.title}</h2>
+            <p>{service.teaser}</p>
+            <span class="card__link">Mehr erfahren <Icon name="arrow-right" class="btn-icon" /></span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

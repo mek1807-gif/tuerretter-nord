@@ -1,0 +1,30 @@
+---
+import { testimonials } from "../config/testimonials";
+---
+
+<div>
+  {testimonials.length > 0 ? (
+    <div class="grid grid--3">
+      {testimonials.map((t) => (
+        <figure class="card">
+          <blockquote style="margin:0 0 1rem;font-style:italic;color:var(--color-text);">
+            „{t.text}“
+          </blockquote>
+          <figcaption class="text-muted" style="font-size:0.85rem;">
+            {t.author}{t.location ? `, ${t.location}` : ""}
+            {t.source && <> · {t.url ? <a href={t.url} rel="noopener">{t.source}</a> : t.source}</>}
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+  ) : (
+    <div class="callout callout--amber">
+      <p style="margin-bottom:0.5rem;font-weight:700;">Hier entstehen bald echte Kundenstimmen.</p>
+      <p class="mb-0">
+        Wir zeigen an dieser Stelle ausschließlich echte, nachvollziehbare Bewertungen unserer Kundinnen und Kunden –
+        keine erfundenen Sterne oder Siegel. Sobald ein Google-Unternehmensprofil eingerichtet ist, verlinken wir
+        hier direkt auf unsere öffentlichen Bewertungen.
+      </p>
+    </div>
+  )}
+</div>

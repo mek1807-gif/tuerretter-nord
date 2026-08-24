@@ -1,0 +1,61 @@
+---
+import { siteConfig } from "../config/site";
+import { mainNav } from "../config/nav";
+import Logo from "./Logo.astro";
+import Icon from "./Icon.astro";
+---
+
+<header class="site-header">
+  <div class="container site-header__bar">
+    <a href="/" class="brand">
+      <Logo class="brand__mark" />
+      <span class="brand__text">
+        <span class="brand__name">{siteConfig.brandName}</span>
+        <span class="brand__claim">{siteConfig.claim}</span>
+      </span>
+    </a>
+
+    <div class="header-actions">
+      <a class="header-phone" href={siteConfig.phone.href}>
+        <Icon name="phone" class="btn-icon" />
+        {siteConfig.phone.display}
+      </a>
+      <a class="btn btn--primary" href={siteConfig.phone.href} data-cta="header-call">
+        <Icon name="phone" class="btn-icon" />
+        <span class="btn-label">Jetzt anrufen</span>
+      </a>
+      <button
+        type="button"
+        class="nav-toggle"
+        id="nav-toggle"
+        aria-expanded="false"
+        aria-controls="main-nav"
+        aria-label="Menü öffnen"
+      >
+        <Icon name="menu" class="btn-icon" />
+      </button>
+    </div>
+  </div>
+
+  <nav class="main-nav" id="main-nav" aria-label="Hauptnavigation">
+    <div class="container">
+      <ul class="main-nav__list">
+        {mainNav.map((item) => (
+          <li><a href={item.href}>{item.label}</a></li>
+        ))}
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<script>
+  const toggle = document.getElementById("nav-toggle");
+  const nav = document.getElementById("main-nav");
+  if (toggle && nav) {
+    toggle.addEventListener("click", () => {
+      const isOpen = nav.classList.toggle("is-open");
+      toggle.setAttribute("aria-expanded", String(isOpen));
+      toggle.setAttribute("aria-label", isOpen ? "Menü schließen" : "Menü öffnen");
+    });
+  }
+</script>

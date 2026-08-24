@@ -1,0 +1,49 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Icon from "../components/Icon.astro";
+import { siteConfig } from "../config/site";
+import { services } from "../config/services";
+import { cities } from "../config/cities";
+
+const title = `Seite nicht gefunden (404) | ${siteConfig.brandName}`;
+const description = "Die aufgerufene Seite existiert nicht oder wurde verschoben. Hier finden Sie schnell zurück.";
+---
+
+<BaseLayout title={title} description={description} path="/404" noindex>
+  <section class="section" style="padding-top:3rem;text-align:center;">
+    <div class="container" style="max-width:640px;">
+      <span class="eyebrow">Fehler 404</span>
+      <h1>Diese Seite konnte nicht gefunden werden</h1>
+      <p class="text-muted">
+        Der aufgerufene Link ist entweder veraltet oder es hat sich ein Tippfehler eingeschlichen.
+        Kein Problem – hier geht es schnell weiter:
+      </p>
+
+      <div class="hero__cta-row" style="justify-content:center;margin-bottom:2rem;">
+        <a href="/" class="btn btn--primary btn--lg">Zur Startseite</a>
+        <a href={siteConfig.phone.href} class="btn btn--secondary btn--lg">
+          <Icon name="phone" class="btn-icon" /> Anrufen: {siteConfig.phone.display}
+        </a>
+      </div>
+
+      <div class="two-col" style="text-align:left;">
+        <div>
+          <h2 style="font-size:1.1rem;">Beliebte Leistungen</h2>
+          <ul class="list-check">
+            {services.slice(0, 4).map((s) => (
+              <li><Icon name="arrow-right" /> <a href={`/leistungen/${s.slug}`}>{s.title}</a></li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <h2 style="font-size:1.1rem;">Einsatzgebiete</h2>
+          <ul class="list-check">
+            {cities.slice(0, 4).map((c) => (
+              <li><Icon name="arrow-right" /> <a href={`/schluesseldienst-${c.slug}`}>Schlüsseldienst {c.name}</a></li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

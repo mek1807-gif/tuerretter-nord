@@ -1,0 +1,69 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import TestimonialsSection from "../components/TestimonialsSection.astro";
+import Icon from "../components/Icon.astro";
+import { siteConfig } from "../config/site";
+
+const title = `Über uns – ${siteConfig.brandName}`;
+const description = `Lernen Sie ${siteConfig.brandName} kennen: unsere Arbeitsweise, unser Anspruch an Transparenz und Qualität, und warum wir auf faire Preise statt Notdienst-Klischees setzen.`;
+---
+
+<BaseLayout title={title} description={description} path="/ueber-uns">
+  <Breadcrumbs items={[{ label: "Start", href: "/" }, { label: "Über uns", href: "/ueber-uns" }]} />
+
+  <section class="section" style="padding-top:1rem;">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Über uns</span>
+        <h1>{siteConfig.brandName} – seriöser Schlüsseldienst im Norden</h1>
+        <p class="text-muted" style="font-size:1.05rem;">
+          Der Name ist Programm: Wir wollen für unsere Kundinnen und Kunden im Moment der Aussperrung ein
+          verlässlicher, fairer Partner sein – ohne Notdienst-Klischees, ohne Kostenfallen.
+        </p>
+      </div>
+
+      <div class="two-col">
+        <div>
+          <h2>Unser Anspruch</h2>
+          <p>
+            Eine ausgesperrte Tür ist für die meisten Menschen ein seltener und stressiger Ausnahmefall. Genau
+            deshalb legen wir besonderen Wert auf Transparenz: Wir nennen Kosten so früh wie möglich, erklären
+            unser Vorgehen und arbeiten möglichst beschädigungsarm.
+          </p>
+          <h2>Wofür wir stehen</h2>
+          <ul class="list-check">
+            <li><Icon name="euro" /> Ehrliche, nachvollziehbare Preisgestaltung</li>
+            <li><Icon name="shield-check" /> Fachgerechte, schonende Arbeitsweise</li>
+            <li><Icon name="clock" /> Realistische statt übertriebene Zeitversprechen</li>
+            <li><Icon name="receipt" /> Nachvollziehbare Abrechnung</li>
+          </ul>
+        </div>
+
+        <aside class="card">
+          <h2>Unternehmensdaten</h2>
+          <ul class="list-check">
+            <li><Icon name="map-pin" /> {siteConfig.legalName}</li>
+            <li><Icon name="map-pin" /> {siteConfig.address.street}, {siteConfig.address.zip} {siteConfig.address.city}</li>
+            <li><Icon name="phone" /> <a href={siteConfig.phone.href}>{siteConfig.phone.display}</a></li>
+            <li><Icon name="mail" /> <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a></li>
+            <li><Icon name="clock" /> {siteConfig.openingHours.display}</li>
+          </ul>
+          <p class="text-muted" style="font-size:0.82rem;">
+            Vollständige rechtliche Angaben finden Sie in unserem <a href="/impressum">Impressum</a>.
+          </p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--muted">
+    <div class="container">
+      <div class="section-head section-head--center">
+        <span class="eyebrow">Kundenstimmen</span>
+        <h2>Was Kundinnen und Kunden sagen</h2>
+      </div>
+      <TestimonialsSection />
+    </div>
+  </section>
+</BaseLayout>

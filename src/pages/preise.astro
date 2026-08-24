@@ -1,0 +1,99 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import Icon from "../components/Icon.astro";
+import { siteConfig } from "../config/site";
+import { basePriceTable, surchargeTable, pricingMeta } from "../config/pricing";
+
+const title = `Preise Schlüsseldienst – transparent & fair | ${siteConfig.brandName}`;
+const description = `Transparente Richtpreise für Türöffnung, Schlosswechsel und Notdienst bei ${siteConfig.brandName}. Alle Zuschläge klar aufgeführt – keine versteckten Kosten.`;
+---
+
+<BaseLayout title={title} description={description} path="/preise">
+  <Breadcrumbs items={[{ label: "Start", href: "/" }, { label: "Preise", href: "/preise" }]} />
+
+  <section class="section" style="padding-top:1rem;">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow"><Icon name="euro" class="btn-icon" /> Preise</span>
+        <h1>Transparente Preise ohne böse Überraschungen</h1>
+        <p class="text-muted">
+          Wir informieren Sie so früh wie möglich über die zu erwartenden Kosten – idealerweise bereits am
+          Telefon, spätestens vor Beginn der Arbeiten vor Ort. Die folgenden Beträge sind Richtpreise.
+        </p>
+      </div>
+
+      <div class="two-col">
+        <div class="price-table__wrap">
+          <table class="price-table">
+            <caption>Grundleistungen</caption>
+            <thead>
+              <tr><th scope="col">Leistung</th><th scope="col">Preis</th></tr>
+            </thead>
+            <tbody>
+              {basePriceTable.map((row) => (
+                <tr>
+                  <td>
+                    {row.label}
+                    <div class="text-muted" style="font-size:0.82rem;font-weight:400;">{row.description}</div>
+                  </td>
+                  <td class="price-table__amount">{row.from ? "ab " : ""}{row.price} {pricingMeta.currency}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <div class="price-table__wrap">
+          <table class="price-table">
+            <caption>Zuschläge</caption>
+            <thead>
+              <tr><th scope="col">Zuschlag</th><th scope="col">Preis</th></tr>
+            </thead>
+            <tbody>
+              {surchargeTable.map((row) => (
+                <tr>
+                  <td>
+                    {row.label}
+                    {row.note && <div class="text-muted" style="font-size:0.82rem;font-weight:400;">{row.note}</div>}
+                  </td>
+                  <td class="price-table__amount">
+                    {row.price === 0 ? "siehe Hinweis" : `${row.price} ${pricingMeta.currency}`}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <p class="price-note" style="margin-top:1.5rem;">{pricingMeta.disclaimer}</p>
+
+      <div class="hero__cta-row" style="margin-top:2rem;">
+        <a href="/preisrechner" class="btn btn--primary btn--lg">
+          <Icon name="calculator" class="btn-icon" /> Preis für meine Situation berechnen
+        </a>
+        <a href={siteConfig.phone.href} class="btn btn--secondary btn--lg">
+          <Icon name="phone" class="btn-icon" /> Lieber direkt anrufen
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--muted">
+    <div class="container">
+      <div class="section-head section-head--center">
+        <span class="eyebrow">Zahlungsmöglichkeiten</span>
+        <h2>So können Sie bezahlen</h2>
+      </div>
+      <div class="grid grid--3" style="max-width:760px;margin-inline:auto;">
+        {siteConfig.paymentMethods.map((method) => (
+          <div class="card" style="align-items:center;text-align:center;">
+            <span class="card__icon" style="margin-inline:auto;"><Icon name="credit-card" /></span>
+            <p class="mb-0">{method}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

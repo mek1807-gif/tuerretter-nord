@@ -1,0 +1,103 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import { siteConfig } from "../config/site";
+
+const title = `Impressum – ${siteConfig.brandName}`;
+const description = `Impressum und rechtliche Angaben zu ${siteConfig.brandName} gemäß § 5 TMG.`;
+---
+
+<BaseLayout title={title} description={description} path="/impressum" noindex={false}>
+  <Breadcrumbs items={[{ label: "Start", href: "/" }, { label: "Impressum", href: "/impressum" }]} />
+
+  <section class="section" style="padding-top:1rem;">
+    <div class="container" style="max-width:820px;">
+      <h1>Impressum</h1>
+
+      <div class="callout callout--amber" style="margin-bottom:2rem;">
+        <p class="mb-0">
+          <strong>Hinweis für den Betreiber:</strong> Diese Seite enthält ausschließlich deutlich markierte
+          Platzhalter. Bitte vor Veröffentlichung der Website ALLE eckigen Klammern durch die tatsächlichen,
+          rechtlich korrekten Angaben ersetzen (Angaben gemäß § 5 TMG bzw. Nachfolgeregelung). Im Zweifel
+          anwaltlich prüfen lassen.
+        </p>
+      </div>
+
+      <h2>Angaben gemäß § 5 TMG</h2>
+      <p>
+        {siteConfig.legalName}<br />
+        {siteConfig.address.street}<br />
+        {siteConfig.address.zip} {siteConfig.address.city}<br />
+        {siteConfig.address.countryName}
+      </p>
+
+      <h2>Vertreten durch</h2>
+      <p>[NAME DER/DES VERTRETUNGSBERECHTIGTEN INHABERS/GESCHÄFTSFÜHRERS]</p>
+
+      <h2>Kontakt</h2>
+      <p>
+        Telefon: {siteConfig.phone.display}<br />
+        E-Mail: {siteConfig.email}
+      </p>
+
+      <h2>Umsatzsteuer-ID</h2>
+      <p>
+        Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:<br />
+        [USt-IdNr., FALLS VORHANDEN – SONST ABSCHNITT ENTFERNEN]
+      </p>
+
+      <h2>Handelsregister / Registereintrag</h2>
+      <p>
+        [FALLS IM HANDELSREGISTER EINGETRAGEN: Registergericht, Registernummer – SONST ABSCHNITT ENTFERNEN]
+      </p>
+
+      <h2>Zuständige Handwerkskammer / Eintragung in die Handwerksrolle</h2>
+      <p>
+        [FALLS ALS HANDWERKSBETRIEB TÄTIG: Name der zuständigen Handwerkskammer und
+        Handwerksrollennummer eintragen – SONST ABSCHNITT ENTFERNEN ODER ANPASSEN]
+      </p>
+
+      <h2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
+      <p>
+        [NAME]<br />
+        {siteConfig.address.street}<br />
+        {siteConfig.address.zip} {siteConfig.address.city}
+      </p>
+
+      <h2>EU-Streitschlichtung</h2>
+      <p>
+        Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:{" "}
+        <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener">
+          https://ec.europa.eu/consumers/odr/
+        </a>. Unsere E-Mail-Adresse finden Sie oben im Impressum.
+      </p>
+
+      <h2>Verbraucherstreitbeilegung / Universalschlichtungsstelle</h2>
+      <p>
+        Wir sind nicht verpflichtet und nicht bereit, an Streitbeilegungsverfahren vor einer
+        Verbraucherschlichtungsstelle teilzunehmen.
+        [FALLS ANDERS GEWÜNSCHT: DIESEN ABSATZ ANPASSEN.]
+      </p>
+
+      <h2>Haftung für Inhalte</h2>
+      <p>
+        Als Diensteanbieter sind wir gemäß § 7 Abs. 1 TMG für eigene Inhalte auf diesen Seiten nach den
+        allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht
+        verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen
+        zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.
+      </p>
+
+      <h2>Haftung für Links</h2>
+      <p>
+        Unser Angebot kann Links zu externen Websites Dritter enthalten, auf deren Inhalte wir keinen
+        Einfluss haben. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter verantwortlich.
+      </p>
+
+      <h2>Urheberrecht</h2>
+      <p>
+        Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem
+        deutschen Urheberrecht. Beiträge Dritter sind als solche gekennzeichnet.
+      </p>
+    </div>
+  </section>
+</BaseLayout>

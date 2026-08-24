@@ -1,0 +1,65 @@
+---
+import { siteConfig } from "../config/site";
+import { footerServiceLinks, footerLegalLinks } from "../config/nav";
+import { cities } from "../config/cities";
+import Icon from "./Icon.astro";
+---
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <p class="footer-brand__name">{siteConfig.brandName}</p>
+        <p>{siteConfig.claim}. Seriöser Schlüsseldienst mit transparenten Preisen im Raum {siteConfig.serviceAreaShort}.</p>
+        <p>
+          <a href={siteConfig.phone.href} class="footer-phone-link">
+            <Icon name="phone" class="btn-icon" /> {siteConfig.phone.display}
+          </a>
+        </p>
+      </div>
+
+      <div>
+        <h3>Leistungen</h3>
+        <ul>
+          {footerServiceLinks.map((item) => (
+            <li><a href={item.href}>{item.label}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <div>
+        <h3>Einsatzgebiete</h3>
+        <ul>
+          {cities.slice(0, 6).map((city) => (
+            <li><a href={`/schluesseldienst-${city.slug}`}>Schlüsseldienst {city.name}</a></li>
+          ))}
+          <li><a href="/einsatzgebiete">Alle Einsatzgebiete</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>Kontakt &amp; Service</h3>
+        <ul>
+          <li><a href="/kontakt">Kontakt</a></li>
+          <li><a href="/ueber-uns">Über uns</a></li>
+          <li><a href="/preise">Preise</a></li>
+          <li><a href="/preisrechner">Preisrechner</a></li>
+          <li><a href="/faq">Häufige Fragen</a></li>
+          <li>{siteConfig.email}</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>&copy; {new Date().getFullYear()} {siteConfig.brandName} · {siteConfig.address.city !== "[ORT]" ? siteConfig.address.city : siteConfig.serviceAreaShort}</span>
+      <nav aria-label="Rechtliches">
+        {footerLegalLinks.map((item, i) => (
+          <>
+            <a href={item.href}>{item.label}</a>
+            {i < footerLegalLinks.length - 1 && <span> · </span>}
+          </>
+        ))}
+      </nav>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,101 @@
+---
+import { siteConfig } from "../config/site";
+---
+
+<!--
+  Hinweis für Entwickler/Betreiber:
+  Dieses Formular funktioniert ohne eigenen Server, indem es beim Absenden
+  eine vorausgefüllte E-Mail (mailto:) über das lokale E-Mail-Programm des
+  Besuchers öffnet. Das ist die zuverlässigste Lösung für rein statisches
+  Hosting ohne Backend.
+
+  Für ein komfortableres Postfach-Erlebnis (ohne dass der Besucher ein
+  E-Mail-Programm öffnen muss) kann das Formular später leicht an einen
+  Formular-Dienst (z. B. Formspree, Netlify Forms) oder eine eigene
+  serverlose Funktion angebunden werden – dafür einfach das "action"-
+  Attribut unten sowie das Submit-Script in ContactForm.astro anpassen.
+  Siehe auch README.md, Abschnitt "Kontaktformular anbinden".
+-->
+<form
+  id="contact-form"
+  class="card"
+  data-mail-to={siteConfig.email}
+  action={`mailto:${siteConfig.email}`}
+  method="post"
+  enctype="text/plain"
+>
+  <div class="form-field">
+    <label for="cf-name">Name *</label>
+    <input type="text" id="cf-name" name="name" required autocomplete="name" />
+  </div>
+
+  <div class="grid grid--2">
+    <div class="form-field">
+      <label for="cf-phone">Telefonnummer *</label>
+      <input type="tel" id="cf-phone" name="phone" required autocomplete="tel" />
+    </div>
+    <div class="form-field">
+      <label for="cf-email">E-Mail</label>
+      <input type="email" id="cf-email" name="email" autocomplete="email" />
+      <p class="form-hint">Optional, falls Rückruf bevorzugt wird.</p>
+    </div>
+  </div>
+
+  <div class="form-field">
+    <label for="cf-city">Ort / Stadtteil</label>
+    <input type="text" id="cf-city" name="city" autocomplete="address-level2" />
+  </div>
+
+  <div class="form-field">
+    <label for="cf-message">Ihr Anliegen *</label>
+    <textarea id="cf-message" name="message" rows="5" required placeholder="z. B. Wohnungstür zugefallen, Adresse, gewünschter Zeitpunkt …"></textarea>
+  </div>
+
+  <div class="form-field">
+    <label style="display:flex;align-items:flex-start;gap:0.6rem;font-weight:500;">
+      <input type="checkbox" id="cf-privacy" name="privacy" required style="width:auto;margin-top:0.25rem;" />
+      <span>
+        Ich habe die <a href="/datenschutz">Datenschutzerklärung</a> gelesen und bin mit der Verarbeitung
+        meiner Angaben zur Bearbeitung meiner Anfrage einverstanden. *
+      </span>
+    </label>
+  </div>
+
+  <button type="submit" class="btn btn--primary btn--lg btn--block">Anfrage senden</button>
+
+  <p class="form-privacy-note">
+    Bei einer akuten Notsituation empfehlen wir den direkten Anruf statt des Formulars, da dieses
+    nicht in jedem Fall sofort bei uns eingesehen wird.
+  </p>
+</form>
+
+<script>
+  const form = document.getElementById("contact-form") as HTMLFormElement | null;
+  if (form) {
+    form.addEventListener("submit", (event) => {
+      const mailTo = form.dataset.mailTo;
+      if (!mailTo) return; // Fallback: natives mailto-Verhalten des Formulars greift.
+      event.preventDefault();
+
+      const name = (form.querySelector<HTMLInputElement>("#cf-name")?.value || "").trim();
+      const phone = (form.querySelector<HTMLInputElement>("#cf-phone")?.value || "").trim();
+      const email = (form.querySelector<HTMLInputElement>("#cf-email")?.value || "").trim();
+      const city = (form.querySelector<HTMLInputElement>("#cf-city")?.value || "").trim();
+      const message = (form.querySelector<HTMLTextAreaElement>("#cf-message")?.value || "").trim();
+
+      const subject = encodeURIComponent(`Anfrage über die Website – ${name || "ohne Namen"}`);
+      const bodyLines = [
+        `Name: ${name}`,
+        `Telefon: ${phone}`,
+        email ? `E-Mail: ${email}` : "",
+        city ? `Ort/Stadtteil: ${city}` : "",
+        "",
+        "Anliegen:",
+        message,
+      ].filter(Boolean);
+      const body = encodeURIComponent(bodyLines.join("\n"));
+
+      window.location.href = `mailto:${mailTo}?subject=${subject}&body=${body}`;
+    });
+  }
+</script>

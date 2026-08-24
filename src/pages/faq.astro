@@ -1,0 +1,37 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import FaqAccordion from "../components/FaqAccordion.astro";
+import Icon from "../components/Icon.astro";
+import { siteConfig } from "../config/site";
+import { faqItems } from "../config/faq";
+import { faqPageSchema } from "../lib/schema";
+
+const title = `Häufige Fragen (FAQ) | ${siteConfig.brandName}`;
+const description = `Antworten auf häufige Fragen zu Kosten, Ablauf und Zuständigkeiten rund um Türöffnung, Schlüsseldienst und Schlosswechsel bei ${siteConfig.brandName}.`;
+---
+
+<BaseLayout title={title} description={description} path="/faq" structuredData={[faqPageSchema(faqItems)]}>
+  <Breadcrumbs items={[{ label: "Start", href: "/" }, { label: "FAQ", href: "/faq" }]} />
+
+  <section class="section" style="padding-top:1rem;">
+    <div class="container">
+      <div class="section-head section-head--center">
+        <span class="eyebrow"><Icon name="message-circle" class="btn-icon" /> FAQ</span>
+        <h1>Häufig gestellte Fragen</h1>
+        <p class="text-muted">
+          Die wichtigsten Antworten rund um Kosten, Ablauf und typische Situationen – ehrlich und ohne Fachchinesisch.
+        </p>
+      </div>
+      <div style="max-width:760px;margin-inline:auto;">
+        <FaqAccordion items={faqItems} openFirst />
+      </div>
+
+      <div class="callout" style="max-width:760px;margin:2rem auto 0;">
+        <p class="mb-0">
+          Ihre Frage war nicht dabei? Rufen Sie uns einfach an: <a href={siteConfig.phone.href}>{siteConfig.phone.display}</a>
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

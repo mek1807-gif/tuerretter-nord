@@ -1,0 +1,119 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import FaqAccordion from "../../components/FaqAccordion.astro";
+import Icon from "../../components/Icon.astro";
+import { siteConfig } from "../../config/site";
+import { services } from "../../config/services";
+import { faqItems } from "../../config/faq";
+import { serviceSchema } from "../../lib/schema";
+
+export function getStaticPaths() {
+  return services.map((service) => ({
+    params: { slug: service.slug },
+    props: { service },
+  }));
+}
+
+const { service } = Astro.props;
+const path = `/leistungen/${service.slug}`;
+
+// Passende FAQ-Untermenge grob nach Stichworten filtern, damit jede
+// Leistungsseite thematisch relevante Fragen zeigt statt immer aller Fragen.
+const relatedFaq = faqItems.filter((item) =>
+  service.slug === "tueroeffnung"
+    ? ["kosten-tueroeffnung", "reaktionszeit", "beschaedigungsfrei"].includes(item.id)
+    : service.slug === "schluessel-verloren"
+    ? ["schluessel-verloren", "zahlungsmoeglichkeiten"].includes(item.id)
+    : service.slug === "schluessel-abgebrochen"
+    ? ["schluessel-abgebrochen", "direkter-schlosswechsel"].includes(item.id)
+    : service.slug === "schlosswechsel"
+    ? ["direkter-schlosswechsel", "zuschlaege"].includes(item.id)
+    : service.slug === "einbruchschutz"
+    ? ["direkter-schlosswechsel"].includes(item.id)
+    : ["reaktionszeit", "nachtzuschlag", "zuschlaege"].includes(item.id)
+);
+
+const otherServices = services.filter((s) => s.slug !== service.slug).slice(0, 3);
+---
+
+<BaseLayout
+  title={service.metaTitle}
+  description={service.metaDescription}
+  path={path}
+  structuredData={[
+    serviceSchema({
+      name: service.title,
+      description: service.metaDescription,
+      url: new URL(path, siteConfig.url).toString(),
+    }),
+  ]}
+>
+  <Breadcrumbs
+    items={[
+      { label: "Start", href: "/" },
+      { label: "Leistungen", href: "/leistungen" },
+      { label: service.title, href: path },
+    ]}
+  />
+
+  <section class="section" style="padding-top:1rem;">
+    <div class="container two-col">
+      <div>
+        <span class="eyebrow"><Icon name={service.icon} class="btn-icon" /> {service.title}</span>
+        <h1>{service.h1}</h1>
+        <p style="font-size:1.1rem;color:var(--color-text-muted);">{service.intro}</p>
+
+        {service.sections.map((block) => (
+          <>
+            <h2>{block.heading}</h2>
+            {block.paragraphs.map((p) => <p>{p}</p>)}
+          </>
+        ))}
+
+        {relatedFaq.length > 0 && (
+          <>
+            <h2>Häufige Fragen zu {service.title.toLowerCase()}</h2>
+            <FaqAccordion items={relatedFaq} />
+          </>
+        )}
+      </div>
+
+      <aside class="stack">
+        <div class="hero__card" style="background:var(--color-navy-950);border-radius:var(--radius-lg);">
+          <h2>Direkt Hilfe anfordern</h2>
+          <p style="color:var(--color-slate-200);font-size:0.92rem;">
+            Rufen Sie uns an – wir schätzen Ihre Situation ehrlich ein.
+          </p>
+          <a href={siteConfig.phone.href} class="btn btn--primary btn--block" style="margin-bottom:0.75rem;">
+            <Icon name="phone" class="btn-icon" /> {siteConfig.phone.display}
+          </a>
+          <a href="/preisrechner" class="btn btn--outline-light btn--block">
+            <Icon name="calculator" class="btn-icon" /> Preis berechnen
+          </a>
+        </div>
+
+        <div class="card">
+          <h3>Das zeichnet uns aus</h3>
+          <ul class="list-check">
+            {service.highlights.map((h) => (
+              <li><Icon name="check" /> {h}</li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Weitere Leistungen</h3>
+          <ul class="list-check">
+            {otherServices.map((s) => (
+              <li>
+                <Icon name="arrow-right" />
+                <a href={`/leistungen/${s.slug}`}>{s.title}</a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,54 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import { siteConfig } from "../config/site";
+
+const title = `Cookie-Einstellungen – ${siteConfig.brandName}`;
+const description = "Informationen zu den auf dieser Website eingesetzten Cookies und Tracking-Technologien.";
+---
+
+<BaseLayout title={title} description={description} path="/cookie-einstellungen">
+  <Breadcrumbs items={[{ label: "Start", href: "/" }, { label: "Cookie-Einstellungen", href: "/cookie-einstellungen" }]} />
+
+  <section class="section" style="padding-top:1rem;">
+    <div class="container" style="max-width:820px;">
+      <h1>Cookie-Einstellungen</h1>
+
+      <div class="callout" style="margin-bottom:2rem;">
+        <p class="mb-0">
+          Diese Website verwendet im aktuellen Auslieferungszustand <strong>keine</strong> Analyse-,
+          Marketing- oder Tracking-Cookies. Es werden ausschließlich technisch notwendige Funktionen
+          genutzt, für die keine Einwilligung erforderlich ist.
+        </p>
+      </div>
+
+      <h2>Technisch notwendige Funktionen</h2>
+      <p>
+        Für den Betrieb der Website selbst (z. B. Anzeige der Seiten, Menüfunktion, Preisrechner) werden
+        keine Cookies gesetzt. Der Preisrechner arbeitet vollständig im Arbeitsspeicher Ihres Browsers und
+        speichert keine Daten dauerhaft.
+      </p>
+
+      <h2>Zukünftige Erweiterung um Analyse-Tools</h2>
+      <p>
+        Sollte künftig ein Analyse-Werkzeug wie Google Analytics oder eine datenschutzfreundliche
+        Alternative (z. B. Matomo, Plausible) sowie die Google Search Console mit entsprechenden
+        Tracking-Funktionen eingebunden werden, wird an dieser Stelle ein Cookie-Consent-Banner ergänzt,
+        über das Besucherinnen und Besucher der Nutzung aktiv zustimmen oder diese ablehnen können. Diese
+        Seite wird dann automatisch um entsprechende Auswahlmöglichkeiten erweitert.
+      </p>
+
+      <p class="text-muted" style="font-size:0.85rem;">
+        [HINWEIS FÜR ENTWICKLER: Sobald ein Analyse-/Marketing-Tool eingebunden wird, hier eine echte
+        Consent-Verwaltung (z. B. eigenes einfaches Consent-Skript oder ein Cookie-Consent-Tool)
+        integrieren und diese Seite sowie die Datenschutzerklärung entsprechend aktualisieren.]
+      </p>
+
+      <h2>Kontakt bei Fragen zum Datenschutz</h2>
+      <p>
+        Bei Fragen zum Datenschutz erreichen Sie uns unter {siteConfig.email} oder in unserer{" "}
+        <a href="/datenschutz">Datenschutzerklärung</a>.
+      </p>
+    </div>
+  </section>
+</BaseLayout>

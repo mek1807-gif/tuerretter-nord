@@ -1,0 +1,19 @@
+---
+/**
+ * Dauerhaft sichtbarer mobiler Anruf-Bereich (nur < 900px, siehe CSS).
+ * Wichtigstes Conversion-Element der gesamten Website.
+ */
+import { siteConfig } from "../config/site";
+import Icon from "./Icon.astro";
+---
+
+<div class="sticky-call" role="complementary" aria-label="Schnellkontakt">
+  <a href={siteConfig.phone.href} class="sticky-call__primary" data-cta="sticky-call">
+    <Icon name="phone" class="btn-icon" />
+    Jetzt anrufen: {siteConfig.phone.display}
+  </a>
+  <a href="/preisrechner" class="sticky-call__secondary">
+    <Icon name="calculator" class="btn-icon" />
+    Preis berechnen
+  </a>
+</div>

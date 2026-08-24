@@ -1,0 +1,24 @@
+---
+import type { FaqItem } from "../config/faq";
+
+interface Props {
+  items: FaqItem[];
+  /** Erstes Element standardmäßig geöffnet anzeigen. */
+  openFirst?: boolean;
+}
+const { items, openFirst = false } = Astro.props;
+---
+
+<div class="faq-list">
+  {items.map((item, index) => (
+    <details class="faq-item" open={openFirst && index === 0}>
+      <summary>
+        <span>{item.question}</span>
+        <span class="faq-item__icon" aria-hidden="true"></span>
+      </summary>
+      <div class="faq-item__body">
+        <p set:text={item.answer} />
+      </div>
+    </details>
+  ))}
+</div>
