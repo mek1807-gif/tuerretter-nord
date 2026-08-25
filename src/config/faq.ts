@@ -17,9 +17,9 @@ export interface FaqItem {
 export const faqItems: FaqItem[] = [
   {
     id: "kosten-tueroeffnung",
-    question: "Wie viel kostet eine Türöffnung?",
+    question: "Was kostet eine Türöffnung?",
     answer:
-      "Die Kosten hängen davon ab, ob die Tür nur zugefallen oder abgeschlossen ist, zu welcher Tageszeit Hilfe benötigt wird und wo sich das Objekt befindet. Auf unserer Preisseite finden Sie Richtpreise, mit unserem Preisrechner erhalten Sie eine unverbindliche Einschätzung für Ihre konkrete Situation.",
+      "Eine reguläre Türöffnung kostet 99 €. Zusätzliche Leistungen wie ein Schlosswechsel, ein neuer Schließzylinder oder weiteres Material werden separat berechnet und vor Beginn der Arbeiten transparent mit Ihnen besprochen.",
   },
   {
     id: "reaktionszeit",
@@ -35,15 +35,15 @@ export const faqItems: FaqItem[] = [
   },
   {
     id: "nachtzuschlag",
-    question: "Was kostet der Schlüsseldienst nachts?",
+    question: "Gibt es Zuschläge für Einsätze nachts oder am Wochenende?",
     answer:
-      "Für Einsätze in der Nacht (in der Regel 22–8 Uhr) fällt ein Nachtzuschlag zum Grundpreis an. Die genaue Höhe finden Sie auf unserer Preisseite; über den Preisrechner können Sie den voraussichtlichen Gesamtpreis inklusive Zuschlag ermitteln.",
+      "Eine reguläre Türöffnung kostet 99 € – unabhängig von Tageszeit oder Wochentag. Zusätzliche Leistungen und Materialien werden separat und vorab transparent besprochen. Wir erfinden keine versteckten Zuschläge.",
   },
   {
     id: "zuschlaege",
-    question: "Welche Zuschläge gibt es?",
+    question: "Gibt es versteckte Kosten?",
     answer:
-      "Übliche Zuschläge sind Abend-, Nacht- sowie Sonn- und Feiertagszuschläge. Alle Zuschläge sind auf unserer Preisseite transparent aufgeführt und fließen automatisch in die Berechnung im Preisrechner ein.",
+      "Nein. Der Preis für eine Türöffnung beträgt 99 €. Wenn zusätzliche Arbeiten oder Materialien benötigt werden, informieren wir Sie vor Beginn darüber und besprechen die Kosten transparent mit Ihnen. Sie erhalten eine nachvollziehbare Rechnung.",
   },
   {
     id: "schluessel-abgebrochen",
@@ -55,13 +55,13 @@ export const faqItems: FaqItem[] = [
     id: "schluessel-verloren",
     question: "Was passiert bei einem verlorenen Schlüssel?",
     answer:
-      "Wir öffnen zunächst Ihre Tür. Anschließend beraten wir Sie ehrlich, ob ein Schlosswechsel sinnvoll ist – etwa wenn der Schlüssel gestohlen wurde und Rückschlüsse auf Ihre Adresse möglich sind.",
+      "Wir öffnen zunächst Ihre Tür für 99 €. Anschließend beraten wir Sie ehrlich, ob ein Schlosswechsel sinnvoll ist – etwa wenn der Schlüssel gestohlen wurde und Rückschlüsse auf Ihre Adresse möglich sind.",
   },
   {
     id: "direkter-schlosswechsel",
     question: "Kann direkt ein neues Schloss eingebaut werden?",
     answer:
-      "In vielen Fällen ja – sofern der passende Schließzylinder verfügbar ist, führen wir den Austausch direkt im Anschluss an die Türöffnung durch. Wir beraten Sie vor Ort zu passenden Optionen und Kosten.",
+      "In vielen Fällen ja – sofern der passende Schließzylinder verfügbar ist, führen wir den Austausch direkt im Anschluss an die Türöffnung durch. Wir beraten Sie vor Ort zu passenden Optionen und den jeweiligen Kosten, bevor wir weiterarbeiten.",
   },
   {
     id: "zahlungsmoeglichkeiten",
@@ -73,6 +73,6 @@ export const faqItems: FaqItem[] = [
     id: "einsatzgebiet",
     question: "In welchen Städten ist Türretter-Nord tätig?",
     answer:
-      "Unser Einsatzgebiet liegt rund um Seevetal in einem Umkreis von etwa 25 km. Dazu können je nach genauer Adresse unter anderem Seevetal, Rosengarten, Hamburg-Harburg, Winsen (Luhe) und Buchholz in der Nordheide gehören. Ob Ihre Adresse innerhalb des Einsatzgebiets liegt, bestätigen wir Ihnen direkt am Telefon.",
+      "Unser Einsatzgebiet liegt rund um Seevetal in einem Umkreis von etwa 25 km. Dazu gehören unter anderem Seevetal, Rosengarten, Hamburg-Harburg, Winsen (Luhe) und Buchholz in der Nordheide. Ob Ihre Adresse innerhalb des Einsatzgebiets liegt, bestätigen wir Ihnen direkt am Telefon.",
   },
 ];

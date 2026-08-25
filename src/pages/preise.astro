@@ -3,10 +3,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Breadcrumbs from "../components/Breadcrumbs.astro";
 import Icon from "../components/Icon.astro";
 import { siteConfig } from "../config/site";
-import { basePriceTable, surchargeTable, pricingMeta } from "../config/pricing";
+import { mainPrice, addonServices, pricingMeta } from "../config/pricing";
 
-const title = `Preise Schlüsseldienst – transparent & fair | ${siteConfig.brandName}`;
-const description = `Transparente Richtpreise für Türöffnung, Schlosswechsel und Notdienst bei ${siteConfig.brandName}. Alle Zuschläge klar aufgeführt – keine versteckten Kosten.`;
+const title = `Preise Schlüsseldienst – Türöffnung 99 € | ${siteConfig.brandName}`;
+const description = `Transparente Preise: Türöffnung für 99 € bei ${siteConfig.brandName}. Zusätzliche Leistungen wie Schlosswechsel oder neuer Schließzylinder werden vorab besprochen. Keine versteckten Kosten.`;
 ---
 
 <BaseLayout title={title} description={description} path="/preise">
@@ -14,73 +14,62 @@ const description = `Transparente Richtpreise für Türöffnung, Schlosswechsel 
 
   <section class="section" style="padding-top:1rem;">
     <div class="container">
-      <div class="section-head">
+      <div class="section-head section-head--center">
         <span class="eyebrow"><Icon name="euro" class="btn-icon" /> Preise</span>
         <h1>Transparente Preise ohne böse Überraschungen</h1>
         <p class="text-muted">
           Wir informieren Sie so früh wie möglich über die zu erwartenden Kosten – idealerweise bereits am
-          Telefon, spätestens vor Beginn der Arbeiten vor Ort. Die folgenden Beträge sind Richtpreise.
+          Telefon, spätestens vor Beginn der Arbeiten vor Ort.
         </p>
       </div>
 
-      <div class="two-col">
-        <div class="price-table__wrap">
-          <table class="price-table">
-            <caption>Grundleistungen</caption>
-            <thead>
-              <tr><th scope="col">Leistung</th><th scope="col">Preis</th></tr>
-            </thead>
-            <tbody>
-              {basePriceTable.map((row) => (
-                <tr>
-                  <td>
-                    {row.label}
-                    <div class="text-muted" style="font-size:0.82rem;font-weight:400;">{row.description}</div>
-                  </td>
-                  <td class="price-table__amount">{row.from ? "ab " : ""}{row.price} {pricingMeta.currency}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-
-        <div class="price-table__wrap">
-          <table class="price-table">
-            <caption>Zuschläge</caption>
-            <thead>
-              <tr><th scope="col">Zuschlag</th><th scope="col">Preis</th></tr>
-            </thead>
-            <tbody>
-              {surchargeTable.map((row) => (
-                <tr>
-                  <td>
-                    {row.label}
-                    {row.note && <div class="text-muted" style="font-size:0.82rem;font-weight:400;">{row.note}</div>}
-                  </td>
-                  <td class="price-table__amount">
-                    {row.price === 0 ? "siehe Hinweis" : `${row.price} ${pricingMeta.currency}`}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+      <div style="max-width:520px;margin-inline:auto;margin-bottom:2.5rem;">
+        <div class="price-box">
+          <p class="price-box__label">Hauptangebot</p>
+          <p class="price-box__title">{mainPrice.label}</p>
+          <p class="price-box__amount">{mainPrice.price}<span class="price-box__currency">{pricingMeta.currency}</span></p>
+          <p class="price-box__note">{mainPrice.description}</p>
         </div>
       </div>
 
-      <p class="price-note" style="margin-top:1.5rem;">{pricingMeta.disclaimer}</p>
-
-      <div class="hero__cta-row" style="margin-top:2rem;">
-        <a href="/preisrechner" class="btn btn--primary btn--lg">
-          <Icon name="calculator" class="btn-icon" /> Preis für meine Situation berechnen
-        </a>
-        <a href={siteConfig.phone.href} class="btn btn--secondary btn--lg">
-          <Icon name="phone" class="btn-icon" /> Lieber direkt anrufen
-        </a>
-      </div>
+      <p class="price-note" style="max-width:760px;margin-inline:auto;">{pricingMeta.disclaimer}</p>
     </div>
   </section>
 
   <section class="section section--muted">
+    <div class="container">
+      <div class="section-head section-head--center">
+        <span class="eyebrow">Zusätzliche Leistungen</span>
+        <h2>Zusatzleistungen – transparent besprochen</h2>
+        <p class="text-muted">
+          Zusätzliche Arbeiten und Materialien werden separat berechnet. Die Kosten dafür werden
+          <strong>vor Beginn der Arbeiten</strong> transparent mit Ihnen besprochen. Wir erfinden keine Preise
+          und führen nichts ohne Ihre Zustimmung aus.
+        </p>
+      </div>
+
+      <div class="addon-list" style="max-width:760px;margin-inline:auto;">
+        {addonServices.map((addon) => (
+          <div class="addon-item">
+            <span class="addon-item__icon"><Icon name={addon.icon} /></span>
+            <div class="addon-item__body">
+              <h3>{addon.label}</h3>
+              <p>{addon.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="callout" style="max-width:760px;margin:2rem auto 0;">
+        <p class="mb-0">
+          <strong>Wichtig:</strong> Wir nennen Ihnen am Telefon einen realistischen Kostenrahmen und informieren
+          Sie vor Ort, bevor zusätzliche Arbeiten anfallen. Keine versteckten Kosten, keine unerwarteten Rechnungen.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
     <div class="container">
       <div class="section-head section-head--center">
         <span class="eyebrow">Zahlungsmöglichkeiten</span>
@@ -93,6 +82,20 @@ const description = `Transparente Richtpreise für Türöffnung, Schlosswechsel 
             <p class="mb-0">{method}</p>
           </div>
         ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section--dark" style="padding-block:clamp(2.5rem,6vw,4rem);">
+    <div class="container text-center">
+      <h2>Jetzt ausgesperrt? Rufen Sie uns an.</h2>
+      <p style="max-width:560px;margin-inline:auto;color:var(--color-slate-200);">
+        Türöffnung für 99 € – transparent, schnell und zuverlässig. Wir schätzen Ihre Situation am Telefon ein.
+      </p>
+      <div class="hero__cta-row" style="justify-content:center;">
+        <a href={siteConfig.phone.href} class="btn btn--primary btn--lg">
+          <Icon name="phone" class="btn-icon" /> Jetzt anrufen: {siteConfig.phone.display}
+        </a>
       </div>
     </div>
   </section>

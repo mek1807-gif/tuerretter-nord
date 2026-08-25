@@ -18,8 +18,6 @@ export function getStaticPaths() {
 const { service } = Astro.props;
 const path = `/leistungen/${service.slug}`;
 
-// Passende FAQ-Untermenge grob nach Stichworten filtern, damit jede
-// Leistungsseite thematisch relevante Fragen zeigt statt immer aller Fragen.
 const relatedFaq = faqItems.filter((item) =>
   service.slug === "tueroeffnung"
     ? ["kosten-tueroeffnung", "reaktionszeit", "beschaedigungsfrei"].includes(item.id)
@@ -80,16 +78,16 @@ const otherServices = services.filter((s) => s.slug !== service.slug).slice(0, 3
       </div>
 
       <aside class="stack">
-        <div class="hero__card" style="background:var(--color-navy-950);border-radius:var(--radius-lg);">
-          <h2>Direkt Hilfe anfordern</h2>
+        <div class="hero__card" style="background:var(--color-navy-900);border-radius:var(--radius-lg);">
+          <h2 style="color:var(--color-white);">Direkt Hilfe anfordern</h2>
           <p style="color:var(--color-slate-200);font-size:0.92rem;">
             Rufen Sie uns an – wir schätzen Ihre Situation ehrlich ein.
           </p>
           <a href={siteConfig.phone.href} class="btn btn--primary btn--block" style="margin-bottom:0.75rem;">
             <Icon name="phone" class="btn-icon" /> {siteConfig.phone.display}
           </a>
-          <a href="/preisrechner" class="btn btn--outline-light btn--block">
-            <Icon name="calculator" class="btn-icon" /> Preis berechnen
+          <a href="/preise" class="btn btn--outline-light btn--block">
+            <Icon name="euro" class="btn-icon" /> Preise ansehen
           </a>
         </div>
 

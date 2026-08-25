@@ -1,8 +1,7 @@
 ---
 /**
  * Logo.astro – Wortmarke "Türretter-Nord" mit dezentem Schild/Schlüssel-Motiv.
- * Bewusst schlicht gehalten (kein verspieltes Ritter-Illustrationsmotiv),
- * damit die Marke seriös und hochwertig statt "mittelalterlich" wirkt.
+ * Helles Design: dunkelblauer Hintergrund mit goldenem Schild und weißem Schlüssel.
  * Reines Inline-SVG -> kein zusätzlicher Bild-Request, beliebig skalierbar.
  */
 interface Props {
@@ -19,11 +18,11 @@ const { class: className = "" } = Astro.props;
   role="img"
   aria-label="Türretter-Nord Logo"
 >
-  <rect width="40" height="40" rx="10" fill="#0F2439" />
+  <rect width="40" height="40" rx="10" fill="#122a47" />
   <path
     d="M20 7.5 12 10.5v7.2c0 6.2 3.9 10.7 8 12.3 4.1-1.6 8-6.1 8-12.3v-7.2L20 7.5Z"
     fill="none"
-    stroke="#F0B752"
+    stroke="#f5c44d"
     stroke-width="1.8"
     stroke-linejoin="round"
   />

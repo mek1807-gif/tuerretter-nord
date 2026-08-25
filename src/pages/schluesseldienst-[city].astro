@@ -7,7 +7,7 @@ import { siteConfig } from "../config/site";
 import { cities } from "../config/cities";
 import { services } from "../config/services";
 import { faqItems } from "../config/faq";
-import { basePriceTable, pricingMeta } from "../config/pricing";
+import { mainPrice, pricingMeta } from "../config/pricing";
 import { serviceSchema } from "../lib/schema";
 
 export function getStaticPaths() {
@@ -25,7 +25,12 @@ const localFaq = [
     question: `In welchen Stadtteilen von ${city.name} sind Sie im Einsatz?`,
     answer: `Wir sind in ganz ${city.name} im Einsatz, unter anderem in ${city.districts.join(", ")}. Bei Unsicherheit rufen Sie uns gerne an – wir sagen Ihnen ehrlich, ob und wie schnell wir bei Ihnen sein können.`,
   },
-  ...faqItems.filter((item) => ["kosten-tueroeffnung", "reaktionszeit", "beschaedigungsfrei"].includes(item.id)),
+  {
+    id: "lokal-preis",
+    question: `Was kostet eine Türöffnung in ${city.name}?`,
+    answer: `Eine reguläre Türöffnung kostet 99 €. Zusätzliche Leistungen wie ein Schlosswechsel oder ein neuer Schließzylinder werden separat berechnet und vor Beginn der Arbeiten transparent mit Ihnen besprochen.`,
+  },
+  ...faqItems.filter((item) => ["reaktionszeit", "beschaedigungsfrei"].includes(item.id)),
 ];
 ---
 
@@ -51,17 +56,15 @@ const localFaq = [
 
   <section class="hero" style="padding-block:clamp(2rem,5vw,3.5rem);">
     <div class="container">
-      <span class="eyebrow" style="background:rgba(255,255,255,0.12);color:#fff;">
-        <Icon name="map-pin" class="btn-icon" /> {city.region}
-      </span>
+      <span class="eyebrow"><Icon name="map-pin" class="btn-icon" /> {city.region}</span>
       <h1>{city.h1}</h1>
       <p class="hero__sub">{city.intro}</p>
       <div class="hero__cta-row">
         <a href={siteConfig.phone.href} class="btn btn--primary btn--lg">
           <Icon name="phone" class="btn-icon" /> Jetzt anrufen
         </a>
-        <a href="/preisrechner" class="btn btn--outline-light btn--lg">
-          <Icon name="calculator" class="btn-icon" /> Preis berechnen
+        <a href="/preise" class="btn btn--secondary btn--lg">
+          <Icon name="euro" class="btn-icon" /> Preise ansehen
         </a>
       </div>
     </div>
@@ -96,8 +99,14 @@ const localFaq = [
       </div>
 
       <aside class="stack">
-        <div class="hero__card" style="background:var(--color-navy-950);border-radius:var(--radius-lg);">
-          <h2>Türe zu, Hilfe nah</h2>
+        <div class="price-box">
+          <p class="price-box__label">Türöffnung</p>
+          <p class="price-box__amount">{mainPrice.price}<span class="price-box__currency">{pricingMeta.currency}</span></p>
+          <p class="price-box__note">{mainPrice.description}</p>
+        </div>
+
+        <div class="hero__card" style="background:var(--color-navy-900);border-radius:var(--radius-lg);">
+          <h2 style="color:var(--color-white);">Türe zu, Hilfe nah</h2>
           <p style="color:var(--color-slate-200);font-size:0.92rem;">
             Rufen Sie uns an – wir helfen Ihnen in {city.name} schnell und zuverlässig weiter.
           </p>
@@ -109,20 +118,7 @@ const localFaq = [
           </a>
         </div>
 
-        <div class="price-table__wrap" style="margin:0;">
-          <table class="price-table">
-            <caption>Richtpreise</caption>
-            <tbody>
-              {basePriceTable.slice(0, 3).map((row) => (
-                <tr>
-                  <td>{row.label}</td>
-                  <td class="price-table__amount">{row.from ? "ab " : ""}{row.price} {pricingMeta.currency}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-        <a href="/preise" style="font-size:0.9rem;">Alle Preise &amp; Zuschläge ansehen →</a>
+        <a href="/preise" style="font-size:0.9rem;">Alle Preise &amp; Zusatzleistungen ansehen →</a>
       </aside>
     </div>
   </section>

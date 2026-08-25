@@ -8,12 +8,12 @@ import { siteConfig } from "../config/site";
 import { services } from "../config/services";
 import { cities } from "../config/cities";
 import { faqItems } from "../config/faq";
-import { basePriceTable, pricingMeta } from "../config/pricing";
+import { mainPrice, pricingMeta } from "../config/pricing";
 import { faqPageSchema } from "../lib/schema";
 
 const homeFaq = faqItems.slice(0, 6);
-const title = `${siteConfig.brandName} – Schlüsseldienst: schnelle & faire Türöffnungen`;
-const description = `Ausgesperrt? ${siteConfig.brandName} öffnet Ihre Tür schnell, seriös und zu transparenten Preisen. Schlüsseldienst im Raum ${siteConfig.serviceAreaShort}. Jetzt anrufen.`;
+const title = `Schlüsseldienst Seevetal – Türöffnung für 99 € | ${siteConfig.brandName}`;
+const description = `Ausgesperrt in Seevetal oder Umgebung? ${siteConfig.brandName} öffnet Ihre Tür schnell und transparent für 99 €. 24/7 erreichbar, Einsatzgebiet ca. 25 km rund um Seevetal. Jetzt anrufen.`;
 ---
 
 <BaseLayout title={title} description={description} path="/" structuredData={[faqPageSchema(homeFaq)]}>
@@ -21,11 +21,11 @@ const description = `Ausgesperrt? ${siteConfig.brandName} öffnet Ihre Tür schn
   <section class="hero">
     <div class="container hero__grid">
       <div>
-        <span class="eyebrow" style="background:rgba(255,255,255,0.12);color:#fff;">Schlüsseldienst {siteConfig.serviceAreaShort}</span>
-        <h1>{siteConfig.brandName} – schnelle &amp; faire Türöffnungen</h1>
+        <span class="eyebrow"><Icon name="map-pin" class="btn-icon" /> Schlüsseldienst {siteConfig.serviceAreaShort}</span>
+        <h1>{siteConfig.brandName} – Schlüsseldienst für Seevetal &amp; Umgebung</h1>
         <p class="hero__sub">
-          Ausgesperrt? Wir helfen schnell, zuverlässig und zu transparenten Preisen – seriös, professionell
-          und mit möglichst beschädigungsarmer Türöffnung.
+          Ausgesperrt? Wir helfen in Seevetal und Umgebung schnell, zuverlässig und transparent –
+          mit möglichst beschädigungsarmer Türöffnung.
         </p>
 
         <a href={siteConfig.phone.href} class="hero__phone" data-cta="hero-phone">
@@ -39,30 +39,24 @@ const description = `Ausgesperrt? ${siteConfig.brandName} öffnet Ihre Tür schn
           <a href={siteConfig.phone.href} class="btn btn--primary btn--lg" data-cta="hero-call">
             <Icon name="phone" class="btn-icon" /> Jetzt anrufen
           </a>
-          <a href="/preisrechner" class="btn btn--outline-light btn--lg" data-cta="hero-calculator">
-            <Icon name="calculator" class="btn-icon" /> Preis berechnen
+          <a href="/preise" class="btn btn--secondary btn--lg" data-cta="hero-prices">
+            <Icon name="euro" class="btn-icon" /> Unsere Preise
           </a>
         </div>
 
         <ul class="hero__facts">
-          <li><Icon name="euro" /> Transparente Preise</li>
-          <li><Icon name="clock" /> Schnelle Einsatzbereitschaft</li>
+          <li><Icon name="euro" /> Türöffnung für 99 €</li>
+          <li><Icon name="clock" /> 24/7 erreichbar</li>
+          <li><Icon name="map-pin" /> ca. 25 km rund um Seevetal</li>
           <li><Icon name="shield-check" /> Möglichst beschädigungsarme Öffnung</li>
-          <li><Icon name="map-pin" /> Einsatzgebiet: {siteConfig.serviceAreaShort}</li>
         </ul>
       </div>
 
-      <div class="hero__card">
-        <h2>So läuft Ihre Anfrage ab</h2>
-        <ul>
-          <li><Icon name="phone" /> Anrufen und Situation kurz schildern</li>
-          <li><Icon name="euro" /> Realistische Kosteneinschätzung am Telefon</li>
-          <li><Icon name="car" /> Anfahrt im Einsatzgebiet</li>
-          <li><Icon name="check-circle" /> Türöffnung – transparent &amp; nachvollziehbar</li>
-        </ul>
-        <a href="/kontakt" class="btn btn--secondary btn--block">
-          <Icon name="message-circle" class="btn-icon" /> Lieber schreiben? Zum Kontaktformular
-        </a>
+      <div class="price-box">
+        <p class="price-box__label">Unser Hauptangebot</p>
+        <p class="price-box__title">{mainPrice.label}</p>
+        <p class="price-box__amount">{mainPrice.price}<span class="price-box__currency">{pricingMeta.currency}</span></p>
+        <p class="price-box__note">{mainPrice.description}</p>
       </div>
     </div>
   </section>
@@ -98,39 +92,31 @@ const description = `Ausgesperrt? ${siteConfig.brandName} öffnet Ihre Tür schn
       <div class="two-col">
         <div>
           <span class="eyebrow">Transparente Preise</span>
-          <h2 id="preise-heading">Klare Preise statt böser Überraschungen</h2>
+          <h2 id="preise-heading">Klarer Preis statt böser Überraschungen</h2>
           <p>
             Wir nennen Ihnen Kosten so früh wie möglich – nach Möglichkeit bereits am Telefon und
-            in jedem Fall vor Beginn der eigentlichen Arbeiten. Unsere Richtpreise finden Sie hier im Überblick.
+            in jedem Fall vor Beginn der eigentlichen Arbeiten. Eine reguläre Türöffnung kostet 99 €.
+            Zusätzliche Leistungen werden separat und transparent besprochen.
           </p>
           <ul class="list-check">
-            <li><Icon name="check" /> Keine versteckten Zusatzkosten</li>
-            <li><Icon name="check" /> Zuschläge klar ausgewiesen (Abend, Nacht, Sonn-/Feiertag)</li>
+            <li><Icon name="check" /> Türöffnung für 99 € – klar und verbindlich</li>
+            <li><Icon name="check" /> Keine versteckten Kosten oder erfundenen Zuschläge</li>
+            <li><Icon name="check" /> Zusatzleistungen werden vorab besprochen</li>
             <li><Icon name="check" /> Nachvollziehbare Rechnung</li>
           </ul>
           <div class="hero__cta-row">
             <a href="/preise" class="btn btn--secondary">Alle Preise ansehen</a>
-            <a href="/preisrechner" class="btn btn--primary">
-              <Icon name="calculator" class="btn-icon" /> Preis jetzt berechnen
+            <a href={siteConfig.phone.href} class="btn btn--primary">
+              <Icon name="phone" class="btn-icon" /> Jetzt anrufen
             </a>
           </div>
         </div>
 
-        <div class="price-table__wrap" style="margin:0;">
-          <table class="price-table">
-            <caption>Richtpreise (Beispiele)</caption>
-            <thead>
-              <tr><th scope="col">Leistung</th><th scope="col">Preis</th></tr>
-            </thead>
-            <tbody>
-              {basePriceTable.map((row) => (
-                <tr>
-                  <td>{row.label}</td>
-                  <td class="price-table__amount">{row.from ? "ab " : ""}{row.price} {pricingMeta.currency}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        <div class="price-box">
+          <p class="price-box__label">Hauptangebot</p>
+          <p class="price-box__title">{mainPrice.label}</p>
+          <p class="price-box__amount">{mainPrice.price}<span class="price-box__currency">{pricingMeta.currency}</span></p>
+          <p class="price-box__note">{mainPrice.description}</p>
         </div>
       </div>
     </div>
@@ -184,18 +170,19 @@ const description = `Ausgesperrt? ${siteConfig.brandName} öffnet Ihre Tür schn
     </div>
   </section>
 
-  <section class="section section--dark" aria-labelledby="cta-heading">
+  <section class="section--dark" style="padding-block:clamp(2.5rem,6vw,4rem);">
     <div class="container text-center">
-      <h2 id="cta-heading">Jetzt ausgesperrt? Wir sind für Sie da.</h2>
+      <h2>Jetzt ausgesperrt? Wir sind für Sie da.</h2>
       <p style="max-width:560px;margin-inline:auto;color:var(--color-slate-200);">
         Rufen Sie uns direkt an – wir schätzen Ihre Situation ehrlich ein und nennen Ihnen die voraussichtlichen Kosten.
+        Türöffnung für 99 €, transparent und ohne versteckte Zuschläge.
       </p>
       <div class="hero__cta-row" style="justify-content:center;">
         <a href={siteConfig.phone.href} class="btn btn--primary btn--lg">
           <Icon name="phone" class="btn-icon" /> {siteConfig.phone.display}
         </a>
-        <a href="/preisrechner" class="btn btn--outline-light btn--lg">
-          <Icon name="calculator" class="btn-icon" /> Preis berechnen
+        <a href="/preise" class="btn btn--outline-light btn--lg">
+          <Icon name="euro" class="btn-icon" /> Preise ansehen
         </a>
       </div>
     </div>

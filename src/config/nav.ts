@@ -12,7 +12,6 @@ export interface NavItem {
 export const mainNav: NavItem[] = [
   { label: "Leistungen", href: "/leistungen" },
   { label: "Preise", href: "/preise" },
-  { label: "Preisrechner", href: "/preisrechner" },
   { label: "Einsatzgebiete", href: "/einsatzgebiete" },
   { label: "FAQ", href: "/faq" },
   { label: "Kontakt", href: "/kontakt" },
