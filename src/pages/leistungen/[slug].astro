@@ -18,6 +18,35 @@ export function getStaticPaths() {
 const { service } = Astro.props;
 const path = `/leistungen/${service.slug}`;
 
+const serviceImages: Record<string, { src: string; alt: string }> = {
+  tueroeffnung: {
+    src: "/images/tueroeffnung.webp",
+    alt: "Metallische Türklinke mit eingesetztem Schlüssel an einer Tür",
+  },
+  "schluessel-verloren": {
+    src: "/images/schluessel-verloren.webp",
+    alt: "Türschloss mit Schlüssel und weiteren Schlüsseln als Detailaufnahme",
+  },
+  "schluessel-abgebrochen": {
+    src: "/images/schluessel-abgebrochen.webp",
+    alt: "Demontierter Schließzylinder mit Metallkomponenten auf einer Unterlage",
+  },
+  schlosswechsel: {
+    src: "/images/schlosswechsel.webp",
+    alt: "Metallschlüssel mit Schließzylinder auf einer dunklen Oberfläche",
+  },
+  einbruchschutz: {
+    src: "/images/einbruchschutz.webp",
+    alt: "Edelstahl-Türgriff mit Schloss an einer blauen Metalltür",
+  },
+  notdienst: {
+    src: "/images/notdienst.webp",
+    alt: "Silberner Türgriff mit Schloss an einer Holztür im warmen Licht",
+  },
+};
+
+const serviceImage = serviceImages[service.slug];
+
 const relatedFaq = faqItems.filter((item) =>
   service.slug === "tueroeffnung"
     ? ["kosten-tueroeffnung", "reaktionszeit", "beschaedigungsfrei"].includes(item.id)
@@ -61,6 +90,18 @@ const otherServices = services.filter((s) => s.slug !== service.slug).slice(0, 3
         <span class="eyebrow"><Icon name={service.icon} class="btn-icon" /> {service.title}</span>
         <h1>{service.h1}</h1>
         <p style="font-size:1.1rem;color:var(--color-text-muted);">{service.intro}</p>
+
+        {serviceImage && (
+          <img
+            src={serviceImage.src}
+            width="1200"
+            height="800"
+            alt={serviceImage.alt}
+            class="service-image"
+            style="margin-bottom:1.5rem;"
+            loading="lazy"
+          />
+        )}
 
         {service.sections.map((block) => (
           <>

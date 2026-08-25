@@ -52,11 +52,21 @@ const description = `Ausgesperrt in Seevetal oder Umgebung? ${siteConfig.brandNa
         </ul>
       </div>
 
-      <div class="price-box">
-        <p class="price-box__label">Unser Hauptangebot</p>
-        <p class="price-box__title">{mainPrice.label}</p>
-        <p class="price-box__amount">{mainPrice.price}<span class="price-box__currency">{pricingMeta.currency}</span></p>
-        <p class="price-box__note">{mainPrice.description}</p>
+      <div>
+        <img
+          src="/images/hero.webp"
+          width="1600"
+          height="900"
+          alt="Schlüssel steckt in einem Türschloss – Nahaufnahme mit warmem Licht"
+          class="hero__image"
+          fetchpriority="high"
+        />
+        <div class="price-box" style="margin-top:1.5rem;">
+          <p class="price-box__label">Unser Hauptangebot</p>
+          <p class="price-box__title">{mainPrice.label}</p>
+          <p class="price-box__amount">{mainPrice.price}<span class="price-box__currency">{pricingMeta.currency}</span></p>
+          <p class="price-box__note">{mainPrice.description}</p>
+        </div>
       </div>
     </div>
   </section>
@@ -112,11 +122,21 @@ const description = `Ausgesperrt in Seevetal oder Umgebung? ${siteConfig.brandNa
           </div>
         </div>
 
-        <div class="price-box">
-          <p class="price-box__label">Hauptangebot</p>
-          <p class="price-box__title">{mainPrice.label}</p>
-          <p class="price-box__amount">{mainPrice.price}<span class="price-box__currency">{pricingMeta.currency}</span></p>
-          <p class="price-box__note">{mainPrice.description}</p>
+        <div>
+          <img
+            src="/images/schluesselbund.webp"
+            width="1200"
+            height="800"
+            alt="Schlüsselbund mit mehreren Metallschlüsseln auf einer Unterlage"
+            class="price-image"
+            loading="lazy"
+          />
+          <div class="price-box" style="margin-top:1.5rem;">
+            <p class="price-box__label">Hauptangebot</p>
+            <p class="price-box__title">{mainPrice.label}</p>
+            <p class="price-box__amount">{mainPrice.price}<span class="price-box__currency">{pricingMeta.currency}</span></p>
+            <p class="price-box__note">{mainPrice.description}</p>
+          </div>
         </div>
       </div>
     </div>

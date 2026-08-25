@@ -1346,3 +1346,46 @@ a.card--service:hover {
   color: var(--color-text-muted);
   padding: 1.5rem;
 }
+
+/* ---------- Bilder ---------- */
+.hero__image {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  display: block;
+}
+
+.service-image {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  display: block;
+}
+
+.service-image--full {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  display: block;
+}
+
+.price-image {
+  width: 100%;
+  max-width: 520px;
+  height: auto;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  display: block;
+  margin-inline: auto;
+}
+
+.image-caption {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  text-align: center;
+  margin-top: 0.5rem;
+}
