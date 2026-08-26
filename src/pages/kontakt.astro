@@ -32,7 +32,7 @@ const mapsQuery = encodeURIComponent(
           </li>
           <li>
             <Icon name="mail" />
-            <span><strong>E-Mail:</strong> <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a></span>
+            <span><strong>E-Mail:</strong> <a href={siteConfig.emailHref}>{siteConfig.email}</a></span>
           </li>
           <li>
             <Icon name="map-pin" />
@@ -54,7 +54,6 @@ const mapsQuery = encodeURIComponent(
           <div>
             <Icon name="map-pin" class="btn-icon" />
             <p class="mb-0">
-              Kartenintegration folgt, sobald die endgültige Geschäftsadresse eingetragen ist.<br />
               <a href={`https://www.google.com/maps/search/?api=1&query=${mapsQuery}`} rel="noopener" target="_blank">
                 Adresse in Google Maps öffnen
               </a>

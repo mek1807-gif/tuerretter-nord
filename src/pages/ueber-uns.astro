@@ -43,10 +43,10 @@ const description = `Lernen Sie ${siteConfig.brandName} kennen: unsere Arbeitswe
         <aside class="card">
           <h2>Unternehmensdaten</h2>
           <ul class="list-check">
-            <li><Icon name="map-pin" /> {siteConfig.legalName}</li>
+            <li><Icon name="map-pin" /> {siteConfig.brandName} – {siteConfig.brandSubtitle}</li>
             <li><Icon name="map-pin" /> {siteConfig.address.street}, {siteConfig.address.zip} {siteConfig.address.city}</li>
             <li><Icon name="phone" /> <a href={siteConfig.phone.href}>{siteConfig.phone.display}</a></li>
-            <li><Icon name="mail" /> <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a></li>
+            <li><Icon name="mail" /> <a href={siteConfig.emailHref}>{siteConfig.email}</a></li>
             <li><Icon name="clock" /> {siteConfig.openingHours.display}</li>
           </ul>
           <p class="text-muted" style="font-size:0.82rem;">

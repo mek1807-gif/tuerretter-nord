@@ -29,5 +29,6 @@ export const footerServiceLinks: NavItem[] = [
 export const footerLegalLinks: NavItem[] = [
   { label: "Impressum", href: "/impressum" },
   { label: "Datenschutz", href: "/datenschutz" },
+  { label: "AGB", href: "/agb" },
   { label: "Cookie-Einstellungen", href: "/cookie-einstellungen" },
 ];

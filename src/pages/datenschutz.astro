@@ -14,61 +14,42 @@ const description = `Informationen zur Verarbeitung personenbezogener Daten bei 
     <div class="container" style="max-width:820px;">
       <h1>Datenschutzerklärung</h1>
 
-      <div class="callout callout--amber" style="margin-bottom:2rem;">
-        <p class="mb-0">
-          <strong>Hinweis für den Betreiber:</strong> Dies ist ein strukturiertes Muster, kein individueller
-          Rechtsrat. Bitte alle Platzhalter ausfüllen, Hosting-Anbieter, Formular- und ggf.
-          Analytics-/Tracking-Dienste ergänzen und die Erklärung vor Livegang juristisch prüfen lassen.
-        </p>
-      </div>
-
       <h2>1. Verantwortlicher</h2>
       <p>
         Verantwortlicher im Sinne der Datenschutz-Grundverordnung (DSGVO) ist:<br />
-        {siteConfig.legalName}<br />
+        {siteConfig.brandName}, {siteConfig.brandSubtitle}<br />
         {siteConfig.address.street}, {siteConfig.address.zip} {siteConfig.address.city}<br />
-        E-Mail: {siteConfig.email}<br />
-        Telefon: {siteConfig.phone.display}
+        E-Mail: <a href={siteConfig.emailHref}>{siteConfig.email}</a><br />
+        Telefon: <a href={siteConfig.phone.href}>{siteConfig.phone.display}</a>
       </p>
 
       <h2>2. Hosting</h2>
       <p>
-        Diese Website wird bei folgendem Hosting-Anbieter gehostet: [NAME UND ANSCHRIFT DES
-        HOSTING-ANBIETERS EINTRAGEN]. Beim Aufruf der Website erhebt der Hosting-Anbieter automatisch
-        Informationen in sogenannten Server-Logfiles, die Ihr Browser übermittelt (z. B. IP-Adresse,
-        Datum und Uhrzeit der Anfrage, Browsertyp, verwendetes Betriebssystem, Referrer-URL). Diese Daten
-        sind nicht bestimmten Personen zuordenbar und werden ausschließlich zur Gewährleistung eines
-        störungsfreien Betriebs sowie zur Verbesserung unseres Angebots ausgewertet (Art. 6 Abs. 1 lit. f
-        DSGVO).
+        Diese Website wird bei einem externen Hosting-Anbieter gehostet. Beim Aufruf der Website erhebt der
+        Hosting-Anbieter automatisch Informationen in sogenannten Server-Logfiles, die Ihr Browser übermittelt
+        (z. B. IP-Adresse, Datum und Uhrzeit der Anfrage, Browsertyp, verwendetes Betriebssystem,
+        Referrer-URL). Diese Daten sind nicht bestimmten Personen zuordenbar und werden ausschließlich zur
+        Gewährleistung eines störungsfreien Betriebs sowie zur Verbesserung unseres Angebots ausgewertet
+        (Art. 6 Abs. 1 lit. f DSGVO).
       </p>
 
       <h2>3. Kontaktaufnahme (Formular, Telefon, E-Mail)</h2>
       <p>
         Wenn Sie uns per Kontaktformular, Telefon oder E-Mail kontaktieren, werden Ihre Angaben zwecks
         Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert (Art. 6 Abs. 1
-        lit. b DSGVO, sofern die Anfrage der Anbahnung eines Vertrags dient, bzw. Art. 6 Abs. 1 lit. f
-        DSGVO bei berechtigtem Interesse an der Bearbeitung Ihrer Anfrage). Diese Daten geben wir nicht
-        ohne Ihre Einwilligung weiter.
+        lit. b DSGVO, sofern die Anfrage der Anbahnung eines Vertrags dient, bzw. Art. 6 Abs. 1 lit. f DSGVO
+        bei berechtigtem Interesse an der Bearbeitung Ihrer Anfrage). Diese Daten geben wir nicht ohne Ihre
+        Einwilligung weiter.
       </p>
       <p>
         Das Kontaktformular dieser Website öffnet beim Absenden eine vorausgefüllte E-Mail über das
-        E-Mail-Programm des Besuchers bzw. übermittelt die Daten [FALLS EIN FORMULAR-DIENST WIE FORMSPREE
-        ODER EINE EIGENE SERVERLESS-FUNKTION EINGESETZT WIRD: HIER NAME UND SITZ DES DIENSTLEISTERS SOWIE
-        GGF. AUFTRAGSVERARBEITUNGSVERTRAG ERGÄNZEN].
+        E-Mail-Programm des Besuchers. Es werden keine Daten an externe Formular-Dienste übermittelt.
       </p>
 
       <h2>4. Cookies und Analyse-/Tracking-Tools</h2>
       <p>
         Diese Website verwendet im Auslieferungszustand keine Analyse- oder Marketing-Cookies. Es werden
         ausschließlich technisch notwendige Funktionen bereitgestellt.
-      </p>
-      <p>
-        [FALLS SPÄTER GOOGLE ANALYTICS, EINE DATENSCHUTZFREUNDLICHE ALTERNATIVE (Z. B. MATOMO, PLAUSIBLE)
-        ODER GOOGLE SEARCH CONSOLE MIT ENTSPRECHENDEN COOKIES/TRACKING-SCRIPTEN EINGEBUNDEN WERDEN: An
-        dieser Stelle den eingesetzten Dienst, die Rechtsgrundlage (i. d. R. Einwilligung gem. Art. 6 Abs.
-        1 lit. a DSGVO i. V. m. § 25 TTDSG), die Speicherdauer, den Auftragsverarbeitungsvertrag sowie ggf.
-        eine Widerrufsmöglichkeit ergänzen. In diesem Fall ist zusätzlich ein Cookie-Consent-Banner
-        einzubinden, siehe Seite „Cookie-Einstellungen“.]
       </p>
 
       <h2>5. Ihre Rechte</h2>
@@ -92,7 +73,7 @@ const description = `Informationen zur Verarbeitung personenbezogener Daten bei 
         Verbindung erkennen Sie an dem Schloss-Symbol in der Adresszeile Ihres Browsers.
       </p>
 
-      <p class="text-muted" style="font-size:0.85rem;">Stand: [DATUM DER LETZTEN AKTUALISIERUNG EINTRAGEN]</p>
+      <p class="text-muted" style="font-size:0.85rem;">Stand: August 2025</p>
     </div>
   </section>
 </BaseLayout>

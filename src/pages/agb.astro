@@ -1,0 +1,144 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import { siteConfig } from "../config/site";
+
+const title = `Allgemeine Geschäftsbedingungen (AGB) – ${siteConfig.brandName}`;
+const description = `Allgemeine Geschäftsbedingungen für Türöffnungen, Schloss- und Schließzylinderarbeiten durch ${siteConfig.brandName}.`;
+---
+
+<BaseLayout title={title} description={description} path="/agb">
+  <Breadcrumbs items={[{ label: "Start", href: "/" }, { label: "AGB", href: "/agb" }]} />
+
+  {/*
+    ENTWICKLERHINWEIS: Diese AGB sind eine Vorlage und vor produktiver Nutzung
+    rechtlich zu prüfen. Keine erfundenen Unternehmensregeln enthalten –
+    Abschnitte ohne verbindliche Regelung sind als solche gekennzeichnet.
+  */}
+
+  <section class="section" style="padding-top:1rem;">
+    <div class="container" style="max-width:820px;">
+      <h1>Allgemeine Geschäftsbedingungen (AGB)</h1>
+
+      <p style="font-size:1.05rem;color:var(--color-text-muted);">
+        {siteConfig.brandName} – {siteConfig.brandSubtitle}
+      </p>
+
+      <h2>§ 1 Geltungsbereich</h2>
+      <p>
+        Diese Allgemeinen Geschäftsbedingungen gelten für alle Verträge über Türöffnungen, Schloss- und
+        Schließzylinderarbeiten sowie damit zusammenhängende Dienstleistungen, die zwischen
+        {siteConfig.brandName} ({siteConfig.legalName}) und dem Auftraggeber geschlossen werden.
+        Abweichende Bedingungen des Auftraggebers werden nur dann Vertragsbestandteil, wenn
+        {siteConfig.brandName} ausdrücklich und schriftlich zustimmt.
+      </p>
+
+      <h2>§ 2 Vertragsschluss</h2>
+      <p>
+        Ein Auftrag kann telefonisch, elektronisch (z. B. per E-Mail oder Kontaktformular) oder vor Ort
+        erteilt werden. Der Vertrag kommt zustande, sobald {siteConfig.brandName} den Auftrag annimmt,
+        insbesondere durch telefonische Bestätigung oder durch die Entsendung eines Mitarbeiters zum
+        Einsatzort. Mündliche Absprachen vor Ort ergänzen den erteilten Auftrag.
+      </p>
+
+      <h2>§ 3 Berechtigungsnachweis</h2>
+      <p>
+        {siteConfig.brandName} darf vor oder nach einer Türöffnung einen geeigneten Nachweis verlangen,
+        dass der Auftraggeber zum Zutritt zur Wohnung, zum Haus oder zu den betreffenden Räumlichkeiten
+        berechtigt ist. Geeignete Nachweise können insbesondere ein Ausweis mit entsprechender Anschrift,
+        ein Mietvertrag, ein Grundbuchauszug oder die Anwesenheit eines Vermieters oder Nachbarn sein.
+      </p>
+      <p>
+        Kann die Berechtigung vor der Öffnung situationsbedingt nicht nachgewiesen werden, kann eine
+        nachträgliche Identitäts- und Berechtigungsprüfung vorgesehen werden. Bei begründeten Zweifeln
+        an der Zugangsberechtigung darf {siteConfig.brandName} die Durchführung der Türöffnung ablehnen.
+      </p>
+
+      <h2>§ 4 Preise</h2>
+      <p>
+        Die auf der Website kommunizierten Festpreise bzw. Preisangaben gelten nur für den dort jeweils
+        beschriebenen Leistungsumfang. Für die reguläre Türöffnung wird auf der Website aktuell ein Preis
+        von 99 € kommuniziert.
+      </p>
+      <p>
+        Zusätzliche Leistungen und Materialien, beispielsweise ein neuer Schließzylinder, ein neues Schloss,
+        Ersatzteile, zusätzliche Reparaturen oder besondere Sicherheitstechnik, können zusätzliche Kosten
+        verursachen. Zusätzliche kostenpflichtige Arbeiten werden grundsätzlich vor ihrer Durchführung
+        mit dem Auftraggeber abgestimmt. Über die entstehenden Kosten wird der Auftraggeber vorab
+        transparent informiert.
+      </p>
+
+      <h2>§ 5 Besondere Umstände bei Türöffnungen</h2>
+      <p>
+        {siteConfig.brandName} strebt bei jeder Türöffnung eine möglichst beschädigungsarme Vorgehensweise an.
+        Eine beschädigungsfreie Öffnung kann jedoch abhängig von Tür, Schloss, Verriegelungszustand, Defekten
+        oder vorhandener Sicherheitstechnik nicht in jedem Fall garantiert werden. Der Auftraggeber wird
+        über die jeweils schonendste Methode und mögliche Folgen vorab informiert, soweit dies vor Ort
+        beurteilbar ist.
+      </p>
+
+      <h2>§ 6 Mitwirkungspflichten des Auftraggebers</h2>
+      <p>
+        Der Auftraggeber ist verpflichtet, richtige und vollständige Angaben zur Situation, zur Adresse und
+        zur Zugangsberechtigung zu machen und die Durchführung der Arbeiten zu ermöglichen. Insbesondere
+        hat der Auftraggeber sicherzustellen, dass der Zugang zur Tür und zum Schloss frei ist und dass
+        ggf. erforderliche Ausweisdokumente oder Berechtigungsnachweise vorliegen.
+      </p>
+
+      <h2>§ 7 Material und Zusatzleistungen</h2>
+      <p>
+        Materialien wie Schließzylinder, Schlösser oder Ersatzteile werden nur berechnet, wenn sie tatsächlich
+        benötigt bzw. vom Auftraggeber beauftragt werden. Die Auswahl und der Preis zusätzlicher Materialien
+        werden vor Beschaffung mit dem Auftraggeber abgestimmt.
+      </p>
+
+      <h2>§ 8 Zahlung</h2>
+      <p>
+        Die Vergütung wird mit Abschluss der Leistung und Rechnungsstellung fällig. Sofern nicht anders
+        vereinbart, ist die Zahlung unmittelbar nach erbrachter Leistung und Übergabe der Rechnung zu leisten.
+        Die jeweils aktuell angebotenen Zahlungsarten werden auf der Website und bei der Auftragserteilung
+        kommuniziert.
+      </p>
+
+      <h2>§ 9 Stornierung / Anfahrt</h2>
+      <p class="text-muted" style="font-size:0.9rem;">
+        <em>Hinweis: Für Stornierungen und Anfahrtskosten liegen derzeit noch keine verbindlichen
+        Unternehmensregeln vor. Dieser Abschnitt ist vor produktiver Nutzung entsprechend festzulegen
+        und rechtlich zu prüfen.</em>
+      </p>
+
+      <h2>§ 10 Haftung</h2>
+      <p>
+        {siteConfig.brandName} haftet nach den gesetzlichen Bestimmungen. Die Haftung für Schäden, die auf
+        einer vorsätzlichen oder grob fahrlässigen Pflichtverletzung beruhen, sowie für Schäden an Leben,
+        Körper oder Gesundheit bleibt unberührt. Für leichte Fahrlässigkeit haftet
+        {siteConfig.brandName} nur bei Verletzung einer wesentlichen Vertragspflicht und nur in Höhe des
+        vertragstypischen, vorhersehbaren Schadens.
+      </p>
+
+      <h2>§ 11 Verbraucherrechte</h2>
+      <p>
+        Die gesetzlichen Rechte von Verbrauchern, insbesondere die sich aus den §§ 355 ff. BGB ergebenden
+        Widerrufsrechte (soweit anwendbar), werden durch diese AGB nicht unzulässig eingeschränkt oder
+        ausgeschlossen.
+      </p>
+
+      <h2>§ 12 Datenschutz</h2>
+      <p>
+        Informationen zur Verarbeitung personenbezogener Daten finden Sie in unserer{" "}
+        <a href="/datenschutz">Datenschutzerklärung</a>.
+      </p>
+
+      <h2>§ 13 Schlussbestimmungen</h2>
+      <p>
+        Es gilt das Recht der Bundesrepublik Deutschland. Für Verbraucher im Sinne des § 13 BGB bleiben
+        die gesetzlichen Gerichtsstände unberührt. Sollten einzelne Bestimmungen dieser AGB unwirksam oder
+        nichtig sein, so bleibt die Wirksamkeit der übrigen Bestimmungen hiervon unberührt.
+      </p>
+
+      <p class="text-muted" style="font-size:0.85rem;margin-top:2rem;">
+        Stand: August 2025 · Diese AGB sind eine Vorlage und vor produktiver Nutzung rechtlich zu prüfen.
+      </p>
+    </div>
+  </section>
+</BaseLayout>

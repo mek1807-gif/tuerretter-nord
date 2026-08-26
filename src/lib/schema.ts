@@ -20,7 +20,7 @@ export function localBusinessSchema() {
     name: siteConfig.brandName,
     legalName: siteConfig.legalName,
     url: siteConfig.url,
-    telephone: siteConfig.phone.href.replace("tel:", ""),
+    telephone: "+4941054062924",
     email: siteConfig.email,
     image: `${siteConfig.url}/images/og-default.png`,
     address: {
@@ -76,7 +76,7 @@ export function serviceSchema(opts: {
     provider: {
       "@type": "Locksmith",
       name: siteConfig.brandName,
-      telephone: siteConfig.phone.href.replace("tel:", ""),
+      telephone: "+4941054062924",
       url: siteConfig.url,
     },
     areaServed: cities.map((city) => city.name),

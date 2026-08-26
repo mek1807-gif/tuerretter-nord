@@ -10,6 +10,7 @@ import Icon from "./Icon.astro";
     <div class="footer-grid">
       <div class="footer-brand">
         <p class="footer-brand__name">{siteConfig.brandName}</p>
+        <p style="font-size:0.8rem;color:var(--color-slate-400);margin-bottom:0.5rem;">{siteConfig.brandSubtitle}</p>
         <p>{siteConfig.claim}. Seriöser Schlüsseldienst mit transparenten Preisen im Raum {siteConfig.serviceAreaShort}.</p>
         <p>
           <a href={siteConfig.phone.href} class="footer-phone-link">
@@ -44,13 +45,13 @@ import Icon from "./Icon.astro";
           <li><a href="/ueber-uns">Über uns</a></li>
           <li><a href="/preise">Preise</a></li>
           <li><a href="/faq">Häufige Fragen</a></li>
-          <li>{siteConfig.email}</li>
+          <li><a href={siteConfig.emailHref}>{siteConfig.email}</a></li>
         </ul>
       </div>
     </div>
 
     <div class="footer-bottom">
-      <span>&copy; {new Date().getFullYear()} {siteConfig.brandName} · {siteConfig.address.city !== "[ORT]" ? siteConfig.address.city : siteConfig.serviceAreaShort}</span>
+      <span>&copy; {new Date().getFullYear()} {siteConfig.brandName} · {siteConfig.address.city}</span>
       <nav aria-label="Rechtliches">
         {footerLegalLinks.map((item, i) => (
           <>

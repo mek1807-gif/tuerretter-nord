@@ -6,13 +6,6 @@
  * Alle Seiten und Komponenten der Website (Header, Footer, Sticky-Call-
  * Button, Kontaktseite, Impressum, Schema.org-Daten, Open-Graph-Tags …)
  * lesen ihre Werte ausschließlich aus dieser Datei.
- *
- * ÄNDERN:
- * 1. Werte unten anpassen (Platzhalter in eckigen Klammern ersetzen).
- * 2. Datei speichern.
- * 3. Website neu bauen/deployen (siehe README.md).
- *
- * Es muss dafür KEIN anderer Code angefasst werden.
  */
 
 export const siteConfig = {
@@ -25,14 +18,23 @@ export const siteConfig = {
   /** Claim / Slogan unter dem Markennamen. */
   claim: "Schnelle & faire Türöffnungen",
 
+  /** Untertitel / rechtlicher Zusatz unter der Marke. */
+  brandSubtitle: "Eine Marke der Thies UG (haftungsbeschränkt)",
+
   /**
    * Vollständiger rechtlicher Unternehmensname für Impressum, Rechnungen
-   * und strukturierte Daten. WICHTIG: Von der Marke ("Türretter-Nord")
-   * kann der rechtliche Name abweichen (z. B. Einzelunternehmen mit
-   * Inhabername oder GmbH-Zusatz). Bitte unbedingt mit den echten
-   * Firmendaten ersetzen, bevor die Seite live geht.
+   * und strukturierte Daten.
    */
-  legalName: "[VOLLSTÄNDIGER RECHTLICHER FIRMENNAME, z. B. „Türretter-Nord Inh. Max Mustermann“ oder „Türretter-Nord GmbH“]",
+  legalName: "Thies UG (haftungsbeschränkt)",
+
+  /** Geschäftsführer. */
+  managingDirector: "Tristan Thies",
+
+  /** Weitere vertretungsberechtigter Geschäftsführer. */
+  authorizedRepresentative: "Moritz Elias Kraatz",
+
+  /** Umsatzsteuer-Identifikationsnummer. */
+  vatId: "DE310189530",
 
   /** Domain ohne Protokoll – nur für Anzeige-Zwecke. */
   domain: "tuerretter-nord.de",
@@ -45,11 +47,11 @@ export const siteConfig = {
    * - display: wie die Nummer auf der Website angezeigt wird
    * - href: exakter tel:-Link-Wert (immer mit Ländervorwahl, ohne
    *   Leerzeichen), damit der Anruf-Button auf Smartphones zuverlässig
-   *   funktioniert, z. B. "tel:+49401234567"
+   *   funktioniert
    */
   phone: {
-    display: "123456",
-    href: "tel:123456",
+    display: "04105 4062924",
+    href: "tel:+4941054062924",
   },
 
   /** WhatsApp-Kontakt, optional. Leer lassen ("") um den Button auszublenden. */
@@ -58,14 +60,19 @@ export const siteConfig = {
     href: "",
   },
 
-  /** E-Mail-Adresse für Kontaktlinks und Impressum. */
-  email: "test@gmail.com",
+  /**
+   * E-Mail-Adresse für Kontaktlinks und Impressum.
+   * - display: sichtbare Schreibweise mit Umlaut
+   * - href: international kompatible Schreibweise (Punycode) für mailto:-Links
+   */
+  email: "info@türretter-nord.de",
+  emailHref: "mailto:info@xn--trretter-nord-wob.de",
 
   /** Geschäftsadresse. Wird für Impressum, Kontaktseite und Schema.org genutzt. */
   address: {
-    street: "Teststraße 69",
-    zip: "[PLZ]",
-    city: "[ORT]",
+    street: "Winkelweg 27",
+    zip: "21218",
+    city: "Seevetal-Emmelndorf",
     region: "Niedersachsen",
     country: "DE",
     countryName: "Deutschland",
@@ -80,11 +87,6 @@ export const siteConfig = {
 
   /**
    * Öffnungszeiten / Erreichbarkeit.
-   * display: Text für Menschen (Kontaktseite, Footer)
-   * schema: maschinenlesbare Zeiten für strukturierte Daten
-   *         (Format: Mo–So Reihenfolge, jeweils opens/closes als "HH:MM")
-   *         Beispiel unten ist auf durchgehende Erreichbarkeit voreingestellt –
-   *         bitte an die tatsächlichen Zeiten anpassen.
    */
   openingHours: {
     display: "24/7 – rund um die Uhr telefonisch erreichbar",
@@ -100,14 +102,12 @@ export const siteConfig = {
   social: {
     facebook: "",
     instagram: "",
-    google: "", // Link zum Google-Unternehmensprofil, sobald angelegt
+    google: "",
   },
 
   /** Angebotene Zahlungsarten – bitte nur tatsächlich angebotene Optionen eintragen. */
   paymentMethods: [
     "Barzahlung",
-    "[EC-/Kartenzahlung – nur eintragen, falls tatsächlich angeboten]",
-    "[Rechnung – nur eintragen, falls tatsächlich angeboten]",
   ],
 } as const;
 

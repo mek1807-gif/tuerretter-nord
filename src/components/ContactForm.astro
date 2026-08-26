@@ -19,8 +19,8 @@ import { siteConfig } from "../config/site";
 <form
   id="contact-form"
   class="card"
-  data-mail-to={siteConfig.email}
-  action={`mailto:${siteConfig.email}`}
+  data-mail-to={siteConfig.emailHref.replace("mailto:", "")}
+  action={siteConfig.emailHref}
   method="post"
   enctype="text/plain"
 >

@@ -14,55 +14,41 @@ const description = `Impressum und rechtliche Angaben zu ${siteConfig.brandName}
     <div class="container" style="max-width:820px;">
       <h1>Impressum</h1>
 
-      <div class="callout callout--amber" style="margin-bottom:2rem;">
-        <p class="mb-0">
-          <strong>Hinweis für den Betreiber:</strong> Diese Seite enthält ausschließlich deutlich markierte
-          Platzhalter. Bitte vor Veröffentlichung der Website ALLE eckigen Klammern durch die tatsächlichen,
-          rechtlich korrekten Angaben ersetzen (Angaben gemäß § 5 TMG bzw. Nachfolgeregelung). Im Zweifel
-          anwaltlich prüfen lassen.
-        </p>
-      </div>
-
       <h2>Angaben gemäß § 5 TMG</h2>
       <p>
-        {siteConfig.legalName}<br />
+        <strong>{siteConfig.brandName}</strong><br />
+        <em>{siteConfig.brandSubtitle}</em><br /><br />
         {siteConfig.address.street}<br />
         {siteConfig.address.zip} {siteConfig.address.city}<br />
         {siteConfig.address.countryName}
       </p>
 
       <h2>Vertreten durch</h2>
-      <p>[NAME DER/DES VERTRETUNGSBERECHTIGTEN INHABERS/GESCHÄFTSFÜHRERS]</p>
+      <p>
+        <strong>Geschäftsführer:</strong> {siteConfig.managingDirector}<br />
+        <strong>Vertretungsberechtigter Geschäftsführer:</strong> {siteConfig.authorizedRepresentative}
+      </p>
 
       <h2>Kontakt</h2>
       <p>
-        Telefon: {siteConfig.phone.display}<br />
-        E-Mail: {siteConfig.email}
+        Telefon: <a href={siteConfig.phone.href}>{siteConfig.phone.display}</a><br />
+        E-Mail: <a href={siteConfig.emailHref}>{siteConfig.email}</a>
       </p>
 
       <h2>Umsatzsteuer-ID</h2>
       <p>
         Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:<br />
-        [USt-IdNr., FALLS VORHANDEN – SONST ABSCHNITT ENTFERNEN]
+        {siteConfig.vatId}
       </p>
 
-      <h2>Handelsregister / Registereintrag</h2>
-      <p>
-        [FALLS IM HANDELSREGISTER EINGETRAGEN: Registergericht, Registernummer – SONST ABSCHNITT ENTFERNEN]
-      </p>
-
-      <h2>Zuständige Handwerkskammer / Eintragung in die Handwerksrolle</h2>
-      <p>
-        [FALLS ALS HANDWERKSBETRIEB TÄTIG: Name der zuständigen Handwerkskammer und
-        Handwerksrollennummer eintragen – SONST ABSCHNITT ENTFERNEN ODER ANPASSEN]
-      </p>
-
-      <h2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
-      <p>
-        [NAME]<br />
-        {siteConfig.address.street}<br />
-        {siteConfig.address.zip} {siteConfig.address.city}
-      </p>
+      {/*
+        TODO (vor produktiver Nutzung prüfen):
+        - Handelsregister / Registernummer / Registergericht (für UG ggf. erforderlich)
+        - Zuständige Handwerkskammer / Eintragung in die Handwerksrolle (falls zutreffend)
+        - Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV
+        Diese Angaben wurden bewusst nicht erfunden und sollten mit echten Daten ergänzt werden,
+        sobald sie vorliegen.
+      */}
 
       <h2>EU-Streitschlichtung</h2>
       <p>
@@ -76,7 +62,6 @@ const description = `Impressum und rechtliche Angaben zu ${siteConfig.brandName}
       <p>
         Wir sind nicht verpflichtet und nicht bereit, an Streitbeilegungsverfahren vor einer
         Verbraucherschlichtungsstelle teilzunehmen.
-        [FALLS ANDERS GEWÜNSCHT: DIESEN ABSATZ ANPASSEN.]
       </p>
 
       <h2>Haftung für Inhalte</h2>
