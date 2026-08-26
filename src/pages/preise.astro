@@ -3,10 +3,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Breadcrumbs from "../components/Breadcrumbs.astro";
 import Icon from "../components/Icon.astro";
 import { siteConfig } from "../config/site";
-import { mainPrice, addonServices, pricingMeta } from "../config/pricing";
+import { mainPrice, addonServices, pricingMeta, emergencyService, travelInfo } from "../config/pricing";
 
-const title = `Preise Schlüsseldienst – Türöffnung 99 € | ${siteConfig.brandName}`;
-const description = `Transparente Preise: Türöffnung für 99 € bei ${siteConfig.brandName}. Zusätzliche Leistungen wie Schlosswechsel oder neuer Schließzylinder werden vorab besprochen. Keine versteckten Kosten.`;
+const title = `Preise Schlüsseldienst – Türöffnung ab 99 € inkl. MwSt. | ${siteConfig.brandName}`;
+const description = `Transparente Preise: Türöffnung ab 99 € inkl. MwSt. bei ${siteConfig.brandName}. Anfahrt bis 15 km inklusive. Zusätzliche Leistungen wie Schlosswechsel oder neuer Schließzylinder werden vorab besprochen. Keine versteckten Kosten.`;
 ---
 
 <BaseLayout title={title} description={description} path="/preise">
@@ -23,21 +23,33 @@ const description = `Transparente Preise: Türöffnung für 99 € bei ${siteCon
         </p>
       </div>
 
-      <div style="max-width:520px;margin-inline:auto;margin-bottom:2.5rem;">
+      <div style="max-width:560px;margin-inline:auto;margin-bottom:2.5rem;">
         <img
           src="/images/tueroeffnung.webp"
           width="1200"
           height="800"
           alt="Metallische Türklinke mit eingesetztem Schlüssel an einer Tür"
           class="price-image"
-          style="margin-bottom:1.5rem;"
+          style="margin-bottom:1.5rem;border-radius:var(--radius-md);"
           loading="lazy"
         />
         <div class="price-box">
           <p class="price-box__label">Hauptangebot</p>
           <p class="price-box__title">{mainPrice.label}</p>
-          <p class="price-box__amount">{mainPrice.price}<span class="price-box__currency">{pricingMeta.currency}</span></p>
-          <p class="price-box__note">{mainPrice.description}</p>
+          <p class="price-box__amount">{mainPrice.price} <span class="price-box__currency">{pricingMeta.currency}</span> <span style="font-size:0.9rem;font-weight:600;color:var(--color-text-muted);">{mainPrice.priceSuffix}</span></p>
+          <ul class="list-check" style="margin-top:0.75rem;font-size:0.92rem;">
+            <li><Icon name="check" /> Anfahrt bis {travelInfo.includedKm} km inklusive</li>
+            <li><Icon name="check" /> Transparente Preisabsprache</li>
+          </ul>
+          <p class="price-box__note" style="margin-top:0.75rem;">{mainPrice.description}</p>
+          <div style="margin-top:0.75rem;padding-top:0.75rem;border-top:1px solid var(--color-border);font-size:0.88rem;">
+            <strong>Notdienst {emergencyService.timeRange}:</strong><br />
+            {emergencyService.price} {pricingMeta.currency} {emergencyService.priceSuffix}
+          </div>
+          <div style="margin-top:0.5rem;font-size:0.88rem;">
+            <strong>Weitere Anfahrt:</strong><br />
+            Ab dem {travelInfo.includedKm + 1}. Kilometer {travelInfo.perExtraKm} je zusätzlichem Kilometer.
+          </div>
         </div>
       </div>
 
@@ -81,16 +93,15 @@ const description = `Transparente Preise: Türöffnung für 99 € bei ${siteCon
   <section class="section">
     <div class="container">
       <div class="section-head section-head--center">
-        <span class="eyebrow">Zahlungsmöglichkeiten</span>
-        <h2>So können Sie bezahlen</h2>
+        <span class="eyebrow">Zahlung</span>
+        <h2>Zahlung</h2>
       </div>
-      <div class="grid grid--3" style="max-width:760px;margin-inline:auto;">
-        {siteConfig.paymentMethods.map((method) => (
-          <div class="card" style="align-items:center;text-align:center;">
-            <span class="card__icon" style="margin-inline:auto;"><Icon name="credit-card" /></span>
-            <p class="mb-0">{method}</p>
-          </div>
-        ))}
+      <div style="max-width:760px;margin-inline:auto;">
+        <div class="card" style="text-align:center;">
+          <span class="card__icon" style="margin-inline:auto;"><Icon name="receipt" /></span>
+          <p class="mb-0" style="font-size:1.05rem;">Die Bezahlung erfolgt ausschließlich auf Rechnung.</p>
+          <p class="text-muted" style="font-size:0.9rem;margin-top:0.5rem;">Nach Durchführung der Arbeiten erhalten Sie eine Rechnung.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -99,7 +110,7 @@ const description = `Transparente Preise: Türöffnung für 99 € bei ${siteCon
     <div class="container text-center">
       <h2>Jetzt ausgesperrt? Rufen Sie uns an.</h2>
       <p style="max-width:560px;margin-inline:auto;color:var(--color-slate-200);">
-        Türöffnung für 99 € – transparent, schnell und zuverlässig. Wir schätzen Ihre Situation am Telefon ein.
+        Türöffnung ab 99 € inkl. MwSt. – transparent, schnell und zuverlässig. Wir schätzen Ihre Situation am Telefon ein.
       </p>
       <div class="hero__cta-row" style="justify-content:center;">
         <a href={siteConfig.phone.href} class="btn btn--primary btn--lg">

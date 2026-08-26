@@ -107,7 +107,7 @@ export const siteConfig = {
 
   /** Angebotene Zahlungsarten – bitte nur tatsächlich angebotene Optionen eintragen. */
   paymentMethods: [
-    "Barzahlung",
+    "Rechnung",
   ],
 } as const;
 

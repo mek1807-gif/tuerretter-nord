@@ -37,12 +37,12 @@ export const cities: City[] = [
     slug: "seevetal",
     name: "Seevetal",
     region: "Niedersachsen",
-    metaTitle: "Schlüsseldienst Seevetal – Türöffnung 99 € 24/7 | Türretter-Nord",
+    metaTitle: "Schlüsseldienst Seevetal – Türöffnung ab 99 € inkl. MwSt. 24/7 | Türretter-Nord",
     metaDescription:
-      "Schlüsseldienst in Seevetal: Türretter-Nord öffnet Ihre Tür für 99 € – rund um die Uhr erreichbar, transparent und fachgerecht. Jetzt anrufen.",
-    h1: "Schlüsseldienst Seevetal – Türöffnung für 99 €",
+      "Schlüsseldienst in Seevetal: Türretter-Nord öffnet Ihre Tür ab 99 € inkl. MwSt. – rund um die Uhr erreichbar, transparent und fachgerecht. Jetzt anrufen.",
+    h1: "Schlüsseldienst Seevetal – Türöffnung ab 99 € inkl. MwSt.",
     intro:
-      "Türretter-Nord ist in Seevetal und den umliegenden Ortsteilen für Türöffnungen, Schlosswechsel und Hilfe bei verlorenen oder abgebrochenen Schlüsseln im Einsatz. Eine reguläre Türöffnung kostet 99 €. Durch den lokalen Schwerpunkt können wir Anfragen aus dem Gemeindegebiet und dem nahen Umland gezielt bedienen.",
+      "Türretter-Nord ist in Seevetal und den umliegenden Ortsteilen für Türöffnungen, Schlosswechsel und Hilfe bei verlorenen oder abgebrochenen Schlüsseln im Einsatz. Eine reguläre Türöffnung kostet ab 99 € inkl. MwSt. Durch den lokalen Schwerpunkt können wir Anfragen aus dem Gemeindegebiet und dem nahen Umland gezielt bedienen.",
     districts: ["Hittfeld", "Meckelfeld", "Maschen", "Fleestedt", "Ramelsloh", "Horst"],
     localNotes: [
       "Seevetal besteht aus vielen Ortsteilen mit unterschiedlichen Wohnlagen – von Mehrfamilienhäusern bis zu Einfamilienhäusern mit moderner Mehrfachverriegelung. Wir stimmen die Öffnungsmethode auf die jeweilige Tür und das Schloss ab.",
@@ -55,12 +55,12 @@ export const cities: City[] = [
     slug: "hamburg-harburg",
     name: "Hamburg-Harburg",
     region: "Hamburg",
-    metaTitle: "Schlüsseldienst Hamburg-Harburg – Türöffnung 99 € | Türretter-Nord",
+    metaTitle: "Schlüsseldienst Hamburg-Harburg – Türöffnung ab 99 € inkl. MwSt. | Türretter-Nord",
     metaDescription:
-      "Schlüsseldienst für Hamburg-Harburg: Türöffnung für 99 €, Schlosswechsel und Notdienst durch Türretter-Nord – rund um die Uhr telefonisch erreichbar.",
-    h1: "Schlüsseldienst Hamburg-Harburg – Türöffnung für 99 €",
+      "Schlüsseldienst für Hamburg-Harburg: Türöffnung ab 99 € inkl. MwSt., Schlosswechsel und Notdienst durch Türretter-Nord – rund um die Uhr telefonisch erreichbar.",
+    h1: "Schlüsseldienst Hamburg-Harburg – Türöffnung ab 99 € inkl. MwSt.",
     intro:
-      "Vom Seevetaler Einsatzschwerpunkt aus bedienen wir auch Teile des Hamburger Südens, insbesondere den Bezirk Harburg, sofern der Einsatzort innerhalb unseres ungefähren 25-km-Radius liegt. Wir helfen bei zugefallenen und abgeschlossenen Türen sowie bei Problemen mit Schlüssel und Schloss – eine Türöffnung kostet 99 €.",
+      "Vom Seevetaler Einsatzschwerpunkt aus bedienen wir auch Teile des Hamburger Südens, insbesondere den Bezirk Harburg, sofern der Einsatzort innerhalb unseres ungefähren 25-km-Radius liegt. Wir helfen bei zugefallenen und abgeschlossenen Türen sowie bei Problemen mit Schlüssel und Schloss – eine Türöffnung kostet ab 99 € inkl. MwSt.",
     districts: ["Harburg", "Heimfeld", "Eißendorf", "Marmstorf", "Neugraben-Fischbek"],
     localNotes: [
       "In Harburg treffen ältere Mehrfamilienhäuser und moderne Wohnanlagen aufeinander. Entsprechend unterschiedlich sind die verbauten Schließsysteme – von klassischen Profilzylindern bis zu Mehrfachverriegelungen.",
@@ -73,12 +73,12 @@ export const cities: City[] = [
     slug: "winsen-luhe",
     name: "Winsen (Luhe)",
     region: "Niedersachsen",
-    metaTitle: "Schlüsseldienst Winsen (Luhe) – Türöffnung 99 € | Türretter-Nord",
+    metaTitle: "Schlüsseldienst Winsen (Luhe) – Türöffnung ab 99 € inkl. MwSt. | Türretter-Nord",
     metaDescription:
-      "Türretter-Nord für Winsen (Luhe): Hilfe bei Türöffnung für 99 €, Schlüsselverlust und Schlosswechsel – transparent und 24/7 erreichbar.",
-    h1: "Schlüsseldienst Winsen (Luhe) – Türöffnung für 99 €",
+      "Türretter-Nord für Winsen (Luhe): Hilfe bei Türöffnung ab 99 € inkl. MwSt., Schlüsselverlust und Schlosswechsel – transparent und 24/7 erreichbar.",
+    h1: "Schlüsseldienst Winsen (Luhe) – Türöffnung ab 99 € inkl. MwSt.",
     intro:
-      "Winsen (Luhe) liegt im erweiterten lokalen Einsatzgebiet von Türretter-Nord. Bei Türproblemen prüfen wir bei Ihrer Anfrage, ob die konkrete Adresse innerhalb unseres rund 25 km großen Einsatzradius um Seevetal liegt. Eine reguläre Türöffnung kostet 99 €.",
+      "Winsen (Luhe) liegt im erweiterten lokalen Einsatzgebiet von Türretter-Nord. Bei Türproblemen prüfen wir bei Ihrer Anfrage, ob die konkrete Adresse innerhalb unseres rund 25 km großen Einsatzradius um Seevetal liegt. Eine reguläre Türöffnung kostet ab 99 € inkl. MwSt.",
     districts: ["Innenstadt", "Roydorf", "Luhdorf", "Pattensen", "Stöckte"],
     localNotes: [
       "Bei Einfamilienhäusern in Winsen sind häufig Haustüren mit Mehrfachverriegelung verbaut. Diese erfordern bei einer Störung eine andere Vorgehensweise als eine lediglich zugefallene Wohnungstür.",
@@ -91,12 +91,12 @@ export const cities: City[] = [
     slug: "buchholz-nordheide",
     name: "Buchholz in der Nordheide",
     region: "Niedersachsen",
-    metaTitle: "Schlüsseldienst Buchholz in der Nordheide – Türöffnung 99 € | Türretter-Nord",
+    metaTitle: "Schlüsseldienst Buchholz in der Nordheide – Türöffnung ab 99 € inkl. MwSt. | Türretter-Nord",
     metaDescription:
-      "Schlüsseldienst für Buchholz in der Nordheide: Türretter-Nord hilft bei Aussperrung, Türöffnung für 99 €, Schlosswechsel und Schlüsselproblemen im lokalen Einsatzgebiet.",
-    h1: "Schlüsseldienst Buchholz in der Nordheide – Türöffnung für 99 €",
+      "Schlüsseldienst für Buchholz in der Nordheide: Türretter-Nord hilft bei Aussperrung, Türöffnung ab 99 € inkl. MwSt., Schlosswechsel und Schlüsselproblemen im lokalen Einsatzgebiet.",
+    h1: "Schlüsseldienst Buchholz in der Nordheide – Türöffnung ab 99 € inkl. MwSt.",
     intro:
-      "Auch Buchholz in der Nordheide gehört je nach genauer Adresse zum Einsatzgebiet rund um Seevetal. Türretter-Nord unterstützt bei zugefallenen oder abgeschlossenen Türen sowie beim Austausch defekter oder unsicherer Schließzylinder. Eine Türöffnung kostet 99 €.",
+      "Auch Buchholz in der Nordheide gehört je nach genauer Adresse zum Einsatzgebiet rund um Seevetal. Türretter-Nord unterstützt bei zugefallenen oder abgeschlossenen Türen sowie beim Austausch defekter oder unsicherer Schließzylinder. Eine Türöffnung kostet ab 99 € inkl. MwSt.",
     districts: ["Buchholz", "Steinbeck", "Sprötze", "Holm-Seppensen", "Trelde"],
     localNotes: [
       "Die Wohngebiete in Buchholz sind geprägt von Einfamilienhäusern, Reihenhäusern und Mehrfamilienhäusern. Damit unterscheiden sich auch Türtypen und Verriegelungen deutlich – wir wählen die Öffnungsmethode entsprechend der Situation.",
@@ -109,12 +109,12 @@ export const cities: City[] = [
     slug: "rosengarten",
     name: "Rosengarten",
     region: "Niedersachsen",
-    metaTitle: "Schlüsseldienst Rosengarten – Türöffnung 99 € | Türretter-Nord",
+    metaTitle: "Schlüsseldienst Rosengarten – Türöffnung ab 99 € inkl. MwSt. | Türretter-Nord",
     metaDescription:
-      "Schlüsseldienst in Rosengarten bei Seevetal: Türretter-Nord hilft bei Türöffnung für 99 € und Schlossproblemen – transparent und rund um die Uhr erreichbar.",
-    h1: "Schlüsseldienst Rosengarten – Türöffnung für 99 €",
+      "Schlüsseldienst in Rosengarten bei Seevetal: Türretter-Nord hilft bei Türöffnung ab 99 € inkl. MwSt. und Schlossproblemen – transparent und rund um die Uhr erreichbar.",
+    h1: "Schlüsseldienst Rosengarten – Türöffnung ab 99 € inkl. MwSt.",
     intro:
-      "Rosengarten liegt direkt westlich von Seevetal und damit in unserem lokalen Schwerpunktgebiet. Wir helfen bei Aussperrungen, defekten Schlössern, abgebrochenen Schlüsseln und auf Wunsch beim Austausch von Schließzylindern. Eine Türöffnung kostet 99 €.",
+      "Rosengarten liegt direkt westlich von Seevetal und damit in unserem lokalen Schwerpunktgebiet. Wir helfen bei Aussperrungen, defekten Schlössern, abgebrochenen Schlüsseln und auf Wunsch beim Austausch von Schließzylindern. Eine Türöffnung kostet ab 99 € inkl. MwSt.",
     districts: ["Nenndorf", "Tötensen", "Ehestorf", "Vahrendorf", "Klecken"],
     localNotes: [
       "In den Ortsteilen von Rosengarten sind viele Einfamilien- und Reihenhäuser vorhanden. Gerade Haustüren mit Mehrfachverriegelungen sollten fachgerecht beurteilt werden, bevor eine Öffnung versucht wird.",

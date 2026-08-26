@@ -12,7 +12,7 @@ export const pricingMeta = {
   currency: "€",
   /** Hinweistext, der unter allen Preisangaben erscheint. */
   disclaimer:
-    "Der Preis für eine reguläre Türöffnung beträgt 99 € (inkl. der gesetzlichen Mehrwertsteuer). Zusätzliche Leistungen wie Schlosswechsel, ein neuer Schließzylinder oder weiteres Material werden separat berechnet und vor Beginn der Arbeiten transparent mit Ihnen besprochen.",
+    "Der Startpreis für eine reguläre Türöffnung beträgt ab 99 € inkl. MwSt. Darin ist die Anfahrt bis 15 km enthalten. Ab dem 16. Kilometer werden 1 € inkl. MwSt. je zusätzlichem Kilometer berechnet. Während der Notdienstzeit (18:00–06:00 Uhr) wird ein Notdienstzuschlag von 20 € inkl. MwSt. erhoben. Zusätzliche Leistungen wie Schlosswechsel, ein neuer Schließzylinder oder weiteres Material werden separat berechnet und vor Beginn der Arbeiten transparent mit Ihnen besprochen.",
 } as const;
 
 /**
@@ -20,9 +20,32 @@ export const pricingMeta = {
  */
 export const mainPrice = {
   label: "Türöffnung",
-  price: 99,
+  price: "ab 99",
+  priceSuffix: "inkl. MwSt.",
   description:
-    "Für eine reguläre Türöffnung im definierten Leistungsumfang. Zusätzliche Arbeiten oder benötigte Materialien, z. B. ein neues Schloss oder ein neuer Schließzylinder, werden separat berechnet und vorher transparent kommuniziert.",
+    "Startpreis für eine reguläre Türöffnung im definierten Leistungsumfang. Anfahrt bis 15 km inklusive. Zusätzliche Arbeiten oder benötigte Materialien, z. B. ein neues Schloss oder ein neuer Schließzylinder, werden separat berechnet und vorher transparent kommuniziert.",
+} as const;
+
+/**
+ * Notdienst-Zuschlag.
+ */
+export const emergencyService = {
+  label: "Notdienstzuschlag",
+  timeRange: "18:00–06:00 Uhr",
+  price: "+20",
+  priceSuffix: "inkl. MwSt.",
+  description:
+    "Bei Einsätzen innerhalb der Notdienstzeit (18:00–06:00 Uhr) wird zusätzlich zum Grundpreis ein Notdienstzuschlag berechnet.",
+} as const;
+
+/**
+ * Anfahrt-Konditionen.
+ */
+export const travelInfo = {
+  includedKm: 15,
+  perExtraKm: "1 € inkl. MwSt.",
+  description:
+    "Die Anfahrt bis 15 km ist im Preis enthalten. Ab dem 16. Kilometer werden 1 € inkl. MwSt. je zusätzlichem Kilometer berechnet.",
 } as const;
 
 /**

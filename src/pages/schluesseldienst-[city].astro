@@ -7,7 +7,7 @@ import { siteConfig } from "../config/site";
 import { cities } from "../config/cities";
 import { services } from "../config/services";
 import { faqItems } from "../config/faq";
-import { mainPrice, pricingMeta } from "../config/pricing";
+import { mainPrice, pricingMeta, travelInfo } from "../config/pricing";
 import { serviceSchema } from "../lib/schema";
 
 export function getStaticPaths() {
@@ -28,7 +28,7 @@ const localFaq = [
   {
     id: "lokal-preis",
     question: `Was kostet eine Türöffnung in ${city.name}?`,
-    answer: `Eine reguläre Türöffnung kostet 99 €. Zusätzliche Leistungen wie ein Schlosswechsel oder ein neuer Schließzylinder werden separat berechnet und vor Beginn der Arbeiten transparent mit Ihnen besprochen.`,
+    answer: `Eine reguläre Türöffnung kostet ab 99 € inkl. MwSt. Darin ist die Anfahrt bis 15 km enthalten. Ab dem 16. Kilometer werden 1 € inkl. MwSt. je zusätzlichem Kilometer berechnet. Während der Notdienstzeit (18:00–06:00 Uhr) wird ein Notdienstzuschlag von 20 € inkl. MwSt. erhoben. Zusätzliche Leistungen wie ein Schlosswechsel oder ein neuer Schließzylinder werden separat berechnet und vor Beginn der Arbeiten transparent mit Ihnen besprochen.`,
   },
   ...faqItems.filter((item) => ["reaktionszeit", "beschaedigungsfrei"].includes(item.id)),
 ];
@@ -101,8 +101,8 @@ const localFaq = [
       <aside class="stack">
         <div class="price-box">
           <p class="price-box__label">Türöffnung</p>
-          <p class="price-box__amount">{mainPrice.price}<span class="price-box__currency">{pricingMeta.currency}</span></p>
-          <p class="price-box__note">{mainPrice.description}</p>
+          <p class="price-box__amount">{mainPrice.price} <span class="price-box__currency">{pricingMeta.currency}</span> <span style="font-size:0.85rem;font-weight:600;color:var(--color-text-muted);">{mainPrice.priceSuffix}</span></p>
+          <p class="price-box__note" style="font-size:0.85rem;">Anfahrt bis {travelInfo.includedKm} km inklusive</p>
         </div>
 
         <div class="hero__card" style="background:var(--color-navy-900);border-radius:var(--radius-lg);">

@@ -19,7 +19,7 @@ export const faqItems: FaqItem[] = [
     id: "kosten-tueroeffnung",
     question: "Was kostet eine Türöffnung?",
     answer:
-      "Eine reguläre Türöffnung kostet 99 €. Zusätzliche Leistungen wie ein Schlosswechsel, ein neuer Schließzylinder oder weiteres Material werden separat berechnet und vor Beginn der Arbeiten transparent mit Ihnen besprochen.",
+      "Eine reguläre Türöffnung kostet ab 99 € inkl. MwSt. Darin ist die Anfahrt bis 15 km enthalten. Ab dem 16. Kilometer werden 1 € inkl. MwSt. je zusätzlichem Kilometer berechnet. Während der Notdienstzeit (18:00–06:00 Uhr) wird ein Notdienstzuschlag von 20 € inkl. MwSt. erhoben. Zusätzliche Leistungen wie ein Schlosswechsel, ein neuer Schließzylinder oder weiteres Material werden separat berechnet und vor Beginn der Arbeiten transparent mit Ihnen besprochen.",
   },
   {
     id: "reaktionszeit",
@@ -37,13 +37,13 @@ export const faqItems: FaqItem[] = [
     id: "nachtzuschlag",
     question: "Gibt es Zuschläge für Einsätze nachts oder am Wochenende?",
     answer:
-      "Eine reguläre Türöffnung kostet 99 € – unabhängig von Tageszeit oder Wochentag. Zusätzliche Leistungen und Materialien werden separat und vorab transparent besprochen. Wir erfinden keine versteckten Zuschläge.",
+      "Der Startpreis für eine reguläre Türöffnung beträgt ab 99 € inkl. MwSt. – unabhängig von Wochentag. Während der Notdienstzeit (18:00–06:00 Uhr) wird ein Notdienstzuschlag von 20 € inkl. MwSt. erhoben. Die Anfahrt bis 15 km ist inklusive, ab dem 16. Kilometer werden 1 € inkl. MwSt. je km berechnet. Zusätzliche Leistungen und Materialien werden separat und vorab transparent besprochen. Wir erfinden keine versteckten Zuschläge.",
   },
   {
     id: "zuschlaege",
     question: "Gibt es versteckte Kosten?",
     answer:
-      "Nein. Der Preis für eine Türöffnung beträgt 99 €. Wenn zusätzliche Arbeiten oder Materialien benötigt werden, informieren wir Sie vor Beginn darüber und besprechen die Kosten transparent mit Ihnen. Sie erhalten eine nachvollziehbare Rechnung.",
+      "Nein. Der Startpreis für eine Türöffnung beträgt ab 99 € inkl. MwSt. Wenn zusätzliche Arbeiten oder Materialien benötigt werden, informieren wir Sie vor Beginn darüber und besprechen die Kosten transparent mit Ihnen. Sie erhalten eine nachvollziehbare Rechnung.",
   },
   {
     id: "schluessel-abgebrochen",
@@ -55,7 +55,7 @@ export const faqItems: FaqItem[] = [
     id: "schluessel-verloren",
     question: "Was passiert bei einem verlorenen Schlüssel?",
     answer:
-      "Wir öffnen zunächst Ihre Tür für 99 €. Anschließend beraten wir Sie ehrlich, ob ein Schlosswechsel sinnvoll ist – etwa wenn der Schlüssel gestohlen wurde und Rückschlüsse auf Ihre Adresse möglich sind.",
+      "Wir öffnen zunächst Ihre Tür ab 99 € inkl. MwSt. Anschließend beraten wir Sie ehrlich, ob ein Schlosswechsel sinnvoll ist – etwa wenn der Schlüssel gestohlen wurde und Rückschlüsse auf Ihre Adresse möglich sind.",
   },
   {
     id: "direkter-schlosswechsel",
@@ -67,7 +67,7 @@ export const faqItems: FaqItem[] = [
     id: "zahlungsmoeglichkeiten",
     question: "Welche Zahlungsmöglichkeiten gibt es?",
     answer:
-      "Die angebotenen Zahlungsarten finden Sie auf unserer Kontaktseite. Grundsätzlich gilt: Fragen Sie bei der telefonischen Anfrage gerne direkt nach den aktuell möglichen Zahlungsarten.",
+      "Die Bezahlung erfolgt ausschließlich auf Rechnung. Nach Durchführung der Arbeiten erhalten Sie eine Rechnung.",
   },
   {
     id: "einsatzgebiet",
